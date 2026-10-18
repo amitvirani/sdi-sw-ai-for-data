@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Session Plan · AI for Data</title>
+<meta name="description" content="90-minute session plan for AI for Data: objectives, run of show, DATA prompt framework, datasets, prep and take-home.">
+<style>
+:root{--ink:#16324A;--amber:#E8A33D;--terra:#C8553D;--sand:#F3E9DC;--slate:#4A5A68;--teal:#2A7F7A;--brick:#A63D2F;--bg:#fff;--fg:#16324A;--muted:#4A5A68;--card:#F3E9DC;--code:#fff}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2133;--fg:#F3E9DC;--muted:#b8c4cf;--card:#1b3a55;--code:#16324A;--terra:#F08A6F;--teal:#5CC2BB;--brick:#F28B7C}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 Calibri,"Segoe UI",system-ui,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{background:#16324A;color:#fff;padding:48px 0 40px}
+.kicker{color:var(--amber);font-weight:700;letter-spacing:.15em;font-size:.8rem;text-transform:uppercase}
+h1,h2{font-family:Cambria,Georgia,serif;line-height:1.2}
+h1{font-size:2.3rem;margin:.4em 0 .3em}
+header p{color:#F3E9DC;margin:0;font-size:1.1rem}
+h2{font-size:1.6rem;margin:2.2em 0 .4em}
+h3{font-family:Cambria,Georgia,serif}
+.sub{color:var(--muted);margin-top:0}
+a{color:inherit}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr))}
+.grid.five{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+.card{background:var(--card);border-radius:12px;padding:16px 18px}
+.card h3{margin:0 0 4px;font-size:1.3rem;color:var(--terra)}
+.card .q{font-weight:700;margin:0 0 8px}
+.card .ex{font-size:.92rem;color:var(--muted);margin:0;font-style:italic}
+.prompt{position:relative;background:var(--code);border:1.5px solid var(--fg);border-radius:10px;padding:16px 64px 16px 18px;margin:12px 0;white-space:pre-wrap}
+.prompt .ph{color:var(--terra);font-weight:700}
+.prompt .dl{color:var(--teal);font-weight:700}
+.copy{position:absolute;top:10px;right:10px;border:0;border-radius:8px;background:var(--fg);color:var(--bg);font:inherit;font-size:.8rem;font-weight:700;padding:6px 10px;cursor:pointer}
+.copy:focus-visible{outline:3px solid var(--amber)}
+.label{font-size:.78rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:18px 0 0}
+.ba{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.ba .bad .label{color:var(--brick)} .ba .good .label{color:var(--teal)}
+h3.group{font-size:1.25rem;color:var(--terra);margin:1.8em 0 0}
+.tag{font-size:.75rem;font-weight:700;border-radius:99px;padding:2px 10px;background:var(--fg);color:var(--bg)}
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.98rem}
+td,th{text-align:left;padding:10px 12px;border-bottom:1px solid rgba(128,128,128,.3);vertical-align:top}
+th{font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+td.num,th.num{text-align:right;white-space:nowrap}
+.warn{background:var(--card);border-radius:12px;padding:6px 20px 14px;margin:32px 0 8px}
+.warn h2{margin-top:.8em;color:var(--brick)}
+ul.check{list-style:none;padding:0}
+ul.check li{padding:6px 0 6px 34px;position:relative}
+ul.check li::before{content:"";position:absolute;left:4px;top:10px;width:18px;height:18px;border:2px solid var(--teal);border-radius:4px}
+footer{margin:56px 0 40px;color:var(--muted);font-size:.9rem}
+nav.tabs{display:flex;gap:8px;margin:22px 0 0;flex-wrap:wrap}nav.tabs a{color:#F3E9DC;text-decoration:none;font-weight:700;font-size:.95rem;padding:6px 14px;border-radius:99px;border:1.5px solid rgba(243,233,220,.5)}nav.tabs a[aria-current=page]{background:#E8A33D;color:#16324A;border-color:#E8A33D}nav.tabs a:focus-visible{outline:3px solid #E8A33D}
+.btnrow{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0 4px}
+.btn{font:inherit;font-weight:700;font-size:.9rem;border-radius:99px;padding:8px 16px;border:1.5px solid var(--fg);background:none;color:var(--fg);cursor:pointer;text-decoration:none;display:inline-block}
+.btn:hover{background:rgba(128,128,128,.15)}
+.btn:focus-visible{outline:3px solid var(--amber)}
+.btn.primary{background:var(--fg);color:var(--bg)}
+.time{font-family:Calibri,"Segoe UI",system-ui,sans-serif;font-size:.78rem;font-weight:700;background:var(--amber);color:#16324A;border-radius:99px;padding:2px 10px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+h2 .time{font-size:.75rem}
+.who{font-family:Calibri,"Segoe UI",system-ui,sans-serif;font-size:.72rem;font-weight:700;border:1.5px solid var(--muted);color:var(--muted);border-radius:99px;padding:1px 9px;margin-left:6px;vertical-align:middle;white-space:nowrap;text-transform:uppercase;letter-spacing:.06em}
+.jump{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0 0}
+.jump a{font-weight:700;font-size:.9rem;text-decoration:none;color:var(--fg);border:1.5px solid var(--fg);border-radius:99px;padding:5px 14px}
+.jump a:hover{background:rgba(128,128,128,.15)}
+ol.steps{padding-left:1.3em}ol.steps li{margin:6px 0;padding-left:4px}
+details{background:var(--card);border-radius:12px;padding:12px 18px;margin:12px 0}
+summary{cursor:pointer;font-weight:700}
+textarea,input.field{width:100%;font:inherit;padding:10px 12px;border-radius:8px;border:1.5px solid var(--fg);background:var(--code);color:var(--fg)}
+textarea{min-height:110px}
+input.cell{width:100%;min-width:70px;font:inherit;font-size:.95rem;padding:5px 8px;border-radius:6px;border:1.5px solid rgba(128,128,128,.6);background:var(--code);color:var(--fg)}
+label{font-weight:700;display:block;margin:12px 0 4px}
+ul.plain{padding-left:1.2em}ul.plain li{margin:4px 0}
+section.act{scroll-margin-top:12px}
+.why{border-left:4px solid var(--amber);background:var(--card);border-radius:0 10px 10px 0;padding:9px 14px;margin:6px 0 14px}
+.why b{color:var(--terra)}
+.verify{border:1.5px dashed var(--teal);border-radius:10px;padding:8px 16px 10px;margin:14px 0}
+.verify > .label:first-child{color:var(--teal);margin-top:6px}
+.letter{font-family:Cambria,Georgia,serif;font-size:2.6rem;line-height:1;color:var(--terra);font-weight:700}
+.motto{font-family:Cambria,Georgia,serif;font-size:1.2rem;text-align:center;margin:16px 0 4px}
+code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;background:rgba(128,128,128,.15);padding:1px 6px;border-radius:5px}
+.prompt code{background:none;padding:0}
+.say{font-style:italic}
+.split{display:grid;gap:10px;grid-template-columns:110px 1fr;margin:6px 0}
+.split > b{color:var(--terra)}
+.part{background:var(--fg);color:var(--bg);border-radius:12px;padding:14px 20px;margin:48px 0 0}
+.part h2{margin:.1em 0 .2em;color:var(--bg)}
+.part p{margin:0;opacity:.85}
+.review{font-style:italic}
+.stars{color:var(--amber);font-style:normal;white-space:nowrap}
+.secret{background:var(--brick);color:#fff;border-radius:12px;padding:10px 18px;margin:24px 0 0;font-weight:700}
+@media (max-width:560px){h1{font-size:1.9rem}.split{grid-template-columns:1fr;gap:2px}}
+@media print{header{background:none;color:#000;padding:10px 0}.copy,nav.tabs,.jump{display:none}.kicker,header p{color:#000}details{display:block}details>*{display:block}.part{background:none;color:#000;border:2px solid #000}.part h2{color:#000}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div class="kicker">Southwest AI · AI for Data · Session plan</div>
+<h1>AI for Data: 90-Minute Session Plan</h1>
+<p>Lead PhoneHub on screen, then everyone repeats the recipe on their own with Copper Kettle Coffee.</p>
+<nav class="tabs" aria-label="Pages"><a href="plan.html" aria-current=page>Session plan</a><a href="trainer.html">Trainer guide</a><a href="index.html">Participant page</a></nav>
+</div></header>
+<main class="wrap">
+<div class="warn" style="background:var(--card)"><h2 style="color:var(--terra)">At a glance</h2>
+<p><b>90 minutes, three moves.</b> You analyze PhoneHub Mobile on screen while everyone follows along. Then each person repeats the same recipe on their own, on a new business, Copper Kettle Coffee, with less help. Same prompts, same checks, different data, so the hands-on proves they learned the method, not the answers.</p>
+<div class="split"><b>Audience</b><span>Mixed: some confident, some know basic AI tools, some digital literate but slow. Every step has a core path everyone finishes and a stretch for fast finishers.</span></div>
+<div class="split"><b>Tools</b><span>Claude (one chat per dataset) · Google Sheets (privacy edits and checks) · ChatGPT or Gemini optional for a second opinion</span></div>
+<div class="split"><b>Core message</b><span>AI does the mechanical work. You bring the goal, and you check every number before it leaves your hands.</span></div></div>
+
+<nav class="jump" aria-label="Jump to a section"><a href="#obj">Objectives</a><a href="#arc">Key moments</a><a href="#ros">Run of show</a><a href="#data">DATA framework</a><a href="#resp">Responsible AI</a><a href="#sets">Datasets</a><a href="#prep">Prep</a><a href="#mixed">Mixed ability</a><a href="#home">Take-home</a></nav>
+
+<section class="act" id="obj"><h2>Learning objectives</h2>
+<p class="sub">By the end of the session, participants can:</p>
+<ol class="steps">
+<li>Remove personal data from a file before it goes into an AI tool, including details hidden in free text.</li>
+<li>Describe a dataset with AI and confirm what one row means.</li>
+<li>Find and fix data-quality problems, and list what changed.</li>
+<li>Ask AI for better questions, and for what the data can't answer.</li>
+<li>Write data prompts with the <b>DATA</b> framework: Describe, Aim, Task + Terms, Answer + Audit.</li>
+<li>Turn free-text reviews into categories, sentiment and themes, and measure agreement.</li>
+<li>Verify AI results with <b>CHECK</b> in Google Sheets, and write a summary that separates facts from guesses.</li>
+</ol></section>
+
+<section class="act" id="arc"><h2>Five key moments</h2>
+<p class="sub">What participants should see for themselves at each stage, and where it happens.</p>
+<div class="grid">
+<div class="card"><h3>1 · One prompt finds the mess</h3><p class="ex">Opening demo and Step 2: Claude spots problems in seconds, then misses one you didn't ask about.</p></div>
+<div class="card"><h3>2 · Better questions</h3><p class="ex">Step 3: AI suggests angles you didn't think of, and admits what the data can't answer.</p></div>
+<div class="card"><h3>3 · The join is a hypothesis</h3><p class="ex">Step 4: one space in a model name quietly drops data.</p></div>
+<div class="card"><h3>4 · It reads 40 reviews</h3><p class="ex">Step 6: sarcasm and Spanish included, and you measure how often it agrees with you.</p></div>
+<div class="card"><h3>5 · Your own finding</h3><p class="ex">Dashboard demo, then the hands-on, where each person finds something themselves.</p></div>
+</div></section>
+
+<section class="act" id="ros"><h2>Run of show</h2>
+<p class="sub">In every guided step you run the prompt on the projector first (about a minute), then the room runs it.</p>
+<div class="tbl"><table><thead><tr><th>Min</th><th>Segment</th><th>Who</th><th>Why we do it</th></tr></thead><tbody>
+<tr><td colspan="4"><b>Part A · Warm-up</b></td></tr>
+<tr><td>0–4</td><td>Opening demo: one prompt finds the problems</td><td>You</td><td>Show what one prompt can do, so everyone wants to learn how.</td></tr>
+<tr><td>4–9</td><td>Spot the Bad Number</td><td>On their own, no tools</td><td>AI numbers can be confidently wrong; spot one before touching any tool.</td></tr>
+<tr><td>9–15</td><td>Five responsible-AI habits + setup in Google Sheets</td><td>Everyone</td><td>Personal data is removed before it reaches an AI tool, a habit for work.</td></tr>
+<tr><td colspan="4"><b>Part B · Guided practice on PhoneHub</b></td></tr>
+<tr><td>15–20</td><td>Step 1: Describe</td><td>You, then all</td><td>If you and the AI disagree on what a row is, every number after is wrong.</td></tr>
+<tr><td>20–27</td><td>Step 2: Check and clean</td><td>You, then all</td><td>Messy data gives confident wrong answers; AI finds only what you ask about.</td></tr>
+<tr><td>27–32</td><td>Step 3: Ask better questions</td><td>You, then all</td><td>AI widens your thinking and shows the data's limits.</td></tr>
+<tr><td>32–35</td><td>Step 4: Check the join</td><td>You (demo)</td><td>Combining sheets silently drops rows when names don't match.</td></tr>
+<tr><td>35–42</td><td>Step 5: DATA prompt, bad → good → best, then cross-check</td><td>You, then all</td><td>A clear prompt turns a generic summary into an answer you can act on and check.</td></tr>
+<tr><td>42–50</td><td>Step 6: Read the reviews</td><td>You, then all</td><td>AI reads hundreds of comments in seconds; you measure how far to trust it.</td></tr>
+<tr><td>50–55</td><td>Dashboard demo + pushback prompt</td><td>You</td><td>Turn verified numbers into something to explore, and prepare for questions.</td></tr>
+<tr><td colspan="4"><b>Part C · Hands-on on Copper Kettle</b></td></tr>
+<tr><td>55–85</td><td>H1–H6: same recipe, new business</td><td>Individually</td><td>Proof they learned the method, not the answers.</td></tr>
+<tr><td colspan="4"><b>Wrap-up</b></td></tr>
+<tr><td>85–90</td><td>Share-out + exit ticket</td><td>Everyone</td><td>Saying a finding aloud locks it in; the ticket turns it into next week's action.</td></tr>
+</tbody></table></div>
+<p><b>Checkpoints:</b> at 0:35 everyone has a cleaned PhoneHub chat; at 0:70 everyone is past H3. If either slips, use the cuts in <a href="#mixed">Mixed ability</a>.</p></section>
+
+<section class="act" id="data"><h2>The DATA prompt framework</h2>
+<p class="sub">Builds on last session's role, task, context, tone and constraints, with tone swapped for what data needs more: proof. The letters spell the subject of the class.</p>
+<div class="tbl"><table><thead><tr><th>Letter</th><th>Stands for</th><th>What you tell the AI</th><th>Example</th></tr></thead><tbody>
+<tr><td class="letter" style="font-size:1.8rem">D</td><td><b>Describe</b></td><td>Who you are; which sheet; what one row means; which period; cleaned or raw</td><td>“I'm an analyst for a phone retailer. One Sales row = one sale, Jan–Jun 2026.”</td></tr>
+<tr><td class="letter" style="font-size:1.8rem">A</td><td><b>Aim</b></td><td>The decision the answer will feed</td><td>“My goal: decide what to restock and whether online discounts are too deep.”</td></tr>
+<tr><td class="letter" style="font-size:1.8rem">T</td><td><b>Task + Terms</b></td><td>The exact questions, and how each number is defined</td><td>“Net Sales by brand. Net Sales = Price × Quantity × (1 − Discount/100).”</td></tr>
+<tr><td class="letter" style="font-size:1.8rem">A</td><td><b>Answer + Audit</b></td><td>The format, and the proof: rows used, formulas, fact vs guess</td><td>“Small tables. Say how many rows you used. Label Calculation, Finding or Hypothesis.”</td></tr>
+</tbody></table></div>
+<p class="motto"><b>D</b>escribe the data · <b>A</b>im at a decision · define the <b>T</b>ask · <b>A</b>udit the answer</p>
+<p class="label">Bad → good → best, run live in Step 5</p>
+<div class="ba">
+<div class="bad"><p class="label">Bad</p><div class="prompt">Analyze this data.</div><p class="sub">Generic tour; AI picks its own questions and probably sums all 128 raw rows.</p></div>
+<div class="good"><p class="label">Good</p><div class="prompt">Which brand sold the most, and which channel gives bigger discounts? Show the answers in tables.</div><p class="sub">Answers the question, but AI decides what “most” means and which rows count, silently.</p></div>
+</div>
+<p class="sub"><b>Best:</b> the full four-part prompt on the participant page, Step 5. In the hands-on, each person rebuilds “Tell me about our coffee sales.” with DATA themselves.</p>
+<p class="label">Verification habit: CHECK</p>
+<p><b>C</b>onfirm scope · <b>H</b>and-check one · <b>E</b>xpose the method · <b>C</b>ross-check · <b>K</b>eep a log</p></section>
+
+<section class="act" id="resp"><h2>Using AI responsibly</h2>
+<p class="sub">Responsible use isn't a separate lecture. It's taught as five habits, each practiced at a specific point in the session and assessed in the take-home.</p>
+<div class="grid five">
+<div class="card"><h3>Protect</h3><p class="ex">Remove personal data before upload, including details hidden in free text.</p></div>
+<div class="card"><h3>Approve</h3><p class="ex">Real work data goes only into tools the organization has approved.</p></div>
+<div class="card"><h3>Verify</h3><p class="ex">CHECK every number before it's shared.</p></div>
+<div class="card"><h3>Label</h3><p class="ex">Separate Calculation, Finding, Hypothesis and Recommendation.</p></div>
+<div class="card"><h3>Disclose</h3><p class="ex">Reports say AI assisted and name the human verifier.</p></div>
+</div>
+<p class="label">Where each habit is practiced</p>
+<div class="tbl"><table><thead><tr><th>Habit</th><th>Practiced in</th><th>What participants do</th></tr></thead><tbody>
+<tr><td><b>Protect</b></td><td>Setup (9–15), H1</td><td>Delete three personal columns in Google Sheets; find a staff name and an email (PhoneHub), a staff name and a phone number (Copper Kettle) hidden in review text</td></tr>
+<tr><td><b>Approve</b></td><td>Three rules (9–15), green/amber/red quick check, exit ticket</td><td>Sort seven examples into green, amber, red; commit to synthetic or approved data for next week's try</td></tr>
+<tr><td><b>Verify</b></td><td>Spot the Bad Number, every step's Verify box, verification log</td><td>Row counts, hand-checks, SUMIF cross-checks, quote checks, review agreement</td></tr>
+<tr><td><b>Label</b></td><td>Step 3, Step 5, H4, H6</td><td>See that “why” questions can't be answered from the data; label each statement in the DATA prompt's Audit line</td></tr>
+<tr><td><b>Disclose</b></td><td>H6 summary, take-home</td><td>End the owner summary with an AI-assistance line and their name as verifier</td></tr>
+</tbody></table></div>
+<p class="label">Also covered</p>
+<ul class="plain">
+<li><b>Fairness:</b> analyze groups (stores, products, categories), never judge named individuals with AI.</li>
+<li><b>Made-up content:</b> the review quote check shows AI can invent a quote that sounds real.</li>
+<li><b>Human accountability:</b> the person who signs the summary owns its numbers, not the tool.</li>
+</ul>
+<p class="sub">Assessment: “Responsible AI and verification” is the largest take-home criterion, at 30 of 100 points.</p></section>
+
+<section class="act" id="sets"><h2>Two datasets</h2>
+<p class="sub">Parallel structure on purpose, so every prompt transfers with a few words swapped. All data is synthetic.</p>
+<div class="tbl"><table><thead><tr><th>File</th><th>Used in</th><th>Business</th><th>Sheets</th><th>Planted problems</th></tr></thead><tbody>
+<tr><td><code>phonehub_sales.xlsx</code></td><td>Part B, guided</td><td>Phone retailer: Atlanta, Denver, Online</td><td>Sales 128, Inventory 13, Reviews 40</td><td>6 in Sales + a join mismatch + personal data in 2 reviews</td></tr>
+<tr><td><code>copper_kettle_sales.xlsx</code></td><td>Part C, individual</td><td>Coffee roaster: Austin, Nashville, Online</td><td>Sales 140, Inventory 11, Reviews 30</td><td>7 in Sales (new: a price typo) + a join mismatch + personal data in 2 reviews</td></tr>
+<tr><td><code>*_clean.xlsx</code></td><td>Fallbacks + Sheets checks</td><td colspan="3">Cleaned Sales, personal columns removed, Inventory names left unmatched so the join lesson still works</td></tr>
+</tbody></table></div></section>
+
+<section class="act" id="prep"><h2>Materials and prep</h2>
+<h3 class="group">The day before</h3>
+<ul class="check">
+<li>Run every PhoneHub prompt in one Claude chat; compare with the trainer guide's answer key; screenshot each output as a fallback</li>
+<li>Run the Copper Kettle core path as a participant would, including the Google Sheets steps; time it</li>
+<li>Build the PhoneHub dashboard once and save the HTML as the backup dashboard</li>
+<li>Publish the participant page with its <code>files/</code> folder; test every download link on a phone and a laptop</li>
+<li>Print the Spot the Bad Number cards (one per person), or just use the participant page</li>
+<li>Check the venue wifi with the whole room on AI tools at once</li>
+<li>Plan seating: put slower participants on aisle seats near the front so you can reach them quickly</li>
+</ul>
+<h3 class="group">Send participants before class</h3>
+<ul class="plain">
+<li>Bring a laptop, not a phone: you'll have Google Sheets and Claude side by side.</li>
+<li>Sign in to Claude and to a Google account (for Google Sheets) on that laptop before class.</li>
+<li>Claude Pro is ideal. On the free plan, long chats can hit usage limits; the clean backup files let anyone restart in a fresh chat.</li>
+</ul></section>
+
+<section class="act" id="mixed"><h2>Mixed-ability support</h2>
+<div class="grid">
+<div class="card"><h3>Priority check-ins</h3><p class="ex">Everyone works on their own. In the hands-on, visit slower participants first, at H1 (file setup) and H3 (cleaning), where most people get stuck.</p></div>
+<div class="card"><h3>Fallbacks</h3><p class="ex">Lost after Step 2 or H3? Clean file, new chat, rejoin at the next step. Backup dashboard covers a failed demo.</p></div>
+<div class="card"><h3>Fast finishers</h3><p class="ex">Every step has a Stretch line; in Part C they take the stretch list, then try the dashboard or the recompute check.</p></div>
+</div>
+<p class="label">If you're running behind, cut in this order</p>
+<ol class="steps"><li>Step 4 (join): one sentence on screen, keep it as a hands-on stretch</li><li>Step 3: run only “what can't this data answer?”</li><li>Dashboard: open the backup instead of generating</li><li>Never cut Step 2's “what did it miss?” moment or the H6 summary</li></ol></section>
+
+<section class="act" id="home"><h2>Take-home</h2>
+<p class="sub">About 45 minutes. Participants finish the Copper Kettle analysis they started, so nobody faces a new file alone.</p>
+<ul class="check"><li>Finish any H1–H6 steps</li><li>Run the join check and explain the mismatch and fix</li><li>Austin vs Nashville: one finding with a number</li><li>Two charts</li><li>Verification log with 4+ checks: two numbers recomputed (one in Google Sheets), one quote check, one totals check</li><li>One-page summary for Maya, with AI-use disclosure and verifier name</li></ul>
+<div class="tbl"><table><thead><tr><th>Criterion</th><th class="num">Points</th><th>Full marks look like</th></tr></thead><tbody>
+<tr><td>Responsible AI and verification</td><td class="num">30</td><td>Personal data removed; 4+ logged checks; hypotheses labeled; AI use disclosed</td></tr>
+<tr><td>Accuracy</td><td class="num">20</td><td>Numbers match the key within $1, using the stated cleaning rules</td></tr>
+<tr><td>Data quality</td><td class="num">15</td><td>All planted problems found, including the price typo and the join mismatch</td></tr>
+<tr><td>Insights and recommendations</td><td class="num">20</td><td>Specific, numeric, combine sales and reviews, each with a test</td></tr>
+<tr><td>Charts</td><td class="num">15</td><td>Right chart type, titled, dollars formatted</td></tr>
+</tbody></table></div>
+<p class="sub">A wrong number your own check caught and fixed scores higher than a right number with no check.</p></section>
+
+<footer>Southwest AI · AI Made Practical | AI for Data · Session plan v2 · Oct 17, 2026</footer>
+</main>
+<script>
+document.querySelectorAll('[data-copy]').forEach(function(el){
+  var b=document.createElement('button');b.className='copy';b.type='button';b.textContent='Copy';
+  b.setAttribute('aria-label','Copy prompt to clipboard');
+  b.onclick=function(){
+    var txt=el.innerText.replace(/\s*(Copy|Copied!)\s*$/,'');
+    var done=function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)};
+    var fb=function(){var a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(a);done()};
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fb)}else{fb()}
+  };
+  el.appendChild(b);
+});
+</script>
+</body>
+</html>

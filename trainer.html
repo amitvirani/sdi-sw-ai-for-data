@@ -182,6 +182,7 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 
 <section class="act learn"><h2>Demo 2 · Spot the AI mistake <span class="time">10–14</span><span class="slide">Slide 7</span></h2>
 <div class="why"><b>Why:</b> before cleaning anything, learners see for themselves that AI can be confidently wrong.</div>
+<div class="split"><b>Note</b><span>The table is a separate example, not from the PhoneHub file (which covers Jan–Jun 2026). Say so if anyone asks. The same numbers are in <code>files/monthly_sales_example.xlsx</code> if you want to sort or chart them live.</span></div>
 <div class="split"><b>Do</b><span>Give the room about 60 seconds: <span class="say">“There's one big mistake. What is it, and how would you check it?”</span> Take two or three answers, then click to reveal the answer panel.</span></div>
 <div class="split"><b>Expect</b><span>July's $950,000 is an outlier, almost certainly a typing error (an extra digit). The other 11 months are $46,900–$58,300 and average $52,182. The AI's other numbers are correct (the total really is $1,524,000), so the outlier is the only problem; its $127,000 average is above 11 of 12 months and the advice is built on a typo.</span></div>
 <div class="split"><b>Say</b><span class="say">“Sort the column or chart it, and one value towers over the rest. In Google Sheets, compare =MAX with =MEDIAN. Then confirm the real number with whoever owns the data.”</span></div></section>
@@ -277,7 +278,7 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 
 <section class="act learn" id="keyph"><h2>PhoneHub</h2>
 <p><b>Rows:</b> Sales 128 → 126 after cleaning · Inventory 13 · Reviews 40. <b>Totals:</b> Net Sales $116,750.98 · Units 156 · Gross Profit $21,470.98 · raw file as-is $118,973.68.</p>
-<details open><summary>Slide 7 outlier table</summary><p>Months as shown on the slide: Jan 48,200 · Feb 46,900 · Mar 51,300 · Apr 52,800 · May 54,100 · Jun 55,600 · Jul 950,000 · Aug 53,900 · Sep 50,700 · Oct 49,800 · Nov 52,400 · Dec 58,300. Total $1,524,000; average $127,000. Without July: 11 months, $46,900–$58,300, average $52,182.</p></details>
+<details open><summary>Slide 7 outlier table (separate example)</summary><p>Not from the PhoneHub file; the same data is in <code>monthly_sales_example.xlsx</code>. Months as shown on the slide: Jan 48,200 · Feb 46,900 · Mar 51,300 · Apr 52,800 · May 54,100 · Jun 55,600 · Jul 950,000 · Aug 53,900 · Sep 50,700 · Oct 49,800 · Nov 52,400 · Dec 58,300. Total $1,524,000; average $127,000. Without July: 11 months, $46,900–$58,300, average $52,182. <code>=MAX(B2:B13)</code> 950,000 vs <code>=MEDIAN(B2:B13)</code> 52,600.</p></details>
 <details open><summary>Planted problems</summary><div class="tbl"><table><thead><tr><th>Problem</th><th>Rows</th><th>Fix</th></tr></thead><tbody>
 <tr><td>Brand spellings</td><td>S-1086, S-1114, S-1117 (apple, APPLE); S-1084, S-1107 (“Samsung ” trailing space); S-1030 (Samsng); S-1021, S-1024 (Moto)</td><td>Standardize</td></tr>
 <tr><td>Wrong brand</td><td>S-1091, S-1098: Pixel 10 under Samsung</td><td>Google</td></tr>

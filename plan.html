@@ -116,6 +116,19 @@ tr.grp.learn td{background:rgba(22,50,74,.10)}tr.grp.hands td{background:rgba(42
 .chip.hands{color:var(--hands-ink);border:1.5px solid var(--hands)}
 @media print{section.act.learn,section.act.hands{border-left-width:4px}.part.learn,.part.hands{color:#000}.part.learn h2,.part.hands h2{color:#000}}
 @media (prefers-color-scheme:dark){.slide{background:#9DB9D3;color:#0f2133}.hands .slide,tr.hands .slide{background:#5CC2BB;color:#0f2133}}
+
+/* Backgrounds matching the slides: cream Learn slides, light-teal Hands-on slides */
+:root{--bg:#FBF8F3;--code:#FFFDF9}
+section.act.hands{background:#EAF4F3;border-radius:0 14px 14px 0;padding:2px 22px 18px;margin-top:28px;--card:#FFFDF9;--code:#FFFDF9}
+section.act.hands h2{margin-top:.9em}
+section.act.hands .why{background:#D3E9E6}
+section.act.learn .card{border:1px solid #E4DDD2}
+.part.hands + section.act.hands{margin-top:20px}
+@media (prefers-color-scheme:dark){:root{--bg:#0f2133;--code:#16324A}
+ section.act.hands{background:rgba(92,194,187,.10);--card:#1b3a55;--code:#16324A}
+ section.act.hands .why{background:rgba(92,194,187,.16)}
+ section.act.learn .card{border-color:rgba(243,233,220,.12)}}
+section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{color:var(--hands-ink)}
 </style>
 </head>
 <body>

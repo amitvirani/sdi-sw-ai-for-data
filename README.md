@@ -24,6 +24,7 @@ All data is **made up**: it looks realistic but describes no real customers, sta
 | [`files/corner_cafe_sales.xlsx`](files/corner_cafe_sales.xlsx) | Hands-on | Coffee shop (Austin, Nashville, Online). Sales 140 rows, Inventory 11, Reviews 30 |
 | [`files/phonehub_clean.xlsx`](files/phonehub_clean.xlsx) | Backup + checks | Cleaned PhoneHub data (126 sales rows), personal columns removed |
 | [`files/corner_cafe_clean.xlsx`](files/corner_cafe_clean.xlsx) | Backup + checks | Cleaned Corner Café data (138 sales rows), personal columns removed |
+| [`files/ai_for_data_class_slides.pdf`](files/ai_for_data_class_slides.pdf) | Participants | The 25 class slides as a PDF (no speaker notes; slide 7's answer panel left out). Linked from the participant page |
 | [`files/monthly_sales_example.xlsx`](files/monthly_sales_example.xlsx) | Slide 7 activity | A separate example, not PhoneHub data: 12 months of 2025 sales with July typed as $950,000, plus an About tab with the AI's answer and checks |
 
 The raw files contain **planted problems** for participants to find: inconsistent spellings, items filed under the wrong brand or category, a duplicate, blank discounts, wrong totals, out-of-period dates, a price outlier (Corner Café only), a name mismatch between sheets, and personal details hidden in review text. The trainer guide lists every one, with the exact rows.

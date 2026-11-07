@@ -128,6 +128,15 @@ section.act.learn .card{border:1px solid #E4DDD2}
 section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{color:var(--hands-ink)}
 
 :root{color-scheme:light}
+
+/* Hands-on solutions: tucked away at the bottom of the participant page */
+section.solutions{margin-top:72px;border-top:1px solid rgba(128,128,128,.25);padding-top:10px}
+details.sol-outer{background:none;padding:4px 0;margin:0}
+details.sol-outer > summary{font-weight:400;font-size:.85rem;color:var(--muted);list-style:none}
+details.sol-outer > summary::-webkit-details-marker{display:none}
+details.sol-outer > summary::before{content:"+ "}
+details.sol-outer[open] > summary::before{content:"− "}
+details.sol-outer details{background:#FFFDF9;border:1px solid #E4DDD2}
 </style>
 </head>
 <body>
@@ -437,6 +446,72 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 <p class="sub">About 45 minutes. Finish Corner Café; everything works on free plans.</p>
 <ul class="check"><li>Finish any H1–H6 steps you didn't complete</li><li>Make two charts</li><li>Compare Austin and Nashville: one finding with a number</li><li>A “My checks” log with at least 4 checks</li><li>A one-page summary for Maya, ending with the AI-assistance line and your name</li></ul>
 <p>Submit one folder named <code>Firstname_Lastname_AIforData</code> with your summary, your checks, two chart images and <code>prompts.txt</code> (your 5 most useful prompts).</p></section>
+
+<section class="act solutions" id="help" aria-label="Hands-on solutions">
+<details class="sol-outer"><summary>Stuck on the hands-on? Solutions</summary>
+<p class="sub">Try each step yourself first. Open only the step you need; your own checks still count more than these answers.</p>
+
+<details><summary>H1 · Understand the data</summary>
+<div class="prompt" data-copy><span class="pt">Role</span>You are a careful data analyst.
+<span class="pt">Task</span>Explain what's in this file and suggest 5 questions this data can answer.
+<span class="pt">Context</span>This is sales data for Corner Café, a coffee shop with two cafés and an online store, for January to June 2026. The owner wants to know what to promote for the holidays and whether online discounts are too deep.
+<span class="pt">Constraints</span>For each sheet, list the columns with an example value, what one row means, the date range and the number of rows. For each question, name the columns it needs. Then list what this data can't tell us.</div>
+<ul class="plain"><li>One Sales row = one order line: one product, at one location, on one date.</li><li>Row counts: Sales 140, Inventory 11, Reviews 30.</li><li>Personal details hidden in review text: a staff name in C-01 and a phone number in C-23.</li></ul></details>
+
+<details><summary>H2 · Clean the data</summary>
+<div class="prompt" data-copy><span class="pt">Role</span>You are a careful data analyst.
+<span class="pt">Task</span>Find problems in the Sales sheet. Don't change anything yet.
+<span class="pt">Context</span>One row is one order line, January to June 2026.
+<span class="pt">Constraints</span>Check every row, not a sample. Look for blanks, duplicate Order_IDs, category names spelled different ways, dates outside January–June, unusual values, and rows where Net_Sales doesn't equal Price × Quantity × (1 − Discount/100). Show a table: problem, rows, suggested fix.</div>
+<div class="prompt" data-copy>Does every product appear under only one category? List any product filed under more than one.</div>
+<div class="prompt" data-copy>Apply the fixes. List every row you changed, before and after, and give the new row count.</div>
+<ul class="plain"><li><b>Outlier:</b> CC-2073, Ethiopia beans at $2,100.00 instead of $21.00 (Net_Sales $1,890.00 → $18.90). Its Net_Sales matches its wrong price, so only a request for unusual values finds it.</li><li><b>Category spellings:</b> CC-2045, CC-2126, CC-2119, CC-2004, CC-2021, CC-2089</li><li><b>Wrong category:</b> CC-2050, CC-2069, Gooseneck Kettle under Merchandise → Brewing Equipment</li><li><b>Duplicate:</b> CC-2063 appears twice</li><li><b>Blank discounts:</b> CC-2061, CC-2115, CC-2118, CC-2127 → 0 (an assumption)</li><li><b>Wrong Net_Sales:</b> CC-2010, CC-2042, CC-2116</li><li><b>Outside the period:</b> CC-2139, Dec 30, 2025</li></ul>
+<p>After cleaning: <b>138 rows</b>.</p></details>
+
+<details><summary>H3 · Answer the question</summary>
+<div class="tbl"><table><thead><tr><th>Maya asks</th><th>So I'll measure</th><th>The answer</th></tr></thead><tbody>
+<tr><td>What should we promote for the holidays?</td><td>Best sellers by units and Net Sales, compared with stock on hand</td><td>Colombia Huila is the top seller (37 sold) with only 5 in stock, so restock before promoting. Canvas Totes (30 in stock, 3 sold) and Burr Grinders (26, 6) are overstocked: good to promote or bundle</td></tr>
+<tr><td>Are our online discounts too deep?</td><td>In-store vs online average discount and profit margin</td><td>Online: 15.0% average discount, 49.7% margin. In store: 3.0% and 56.6%</td></tr>
+</tbody></table></div>
+<div class="prompt" data-copy><span class="pt">Role</span>You are an analyst helping the owner make a decision.
+<span class="pt">Task</span>Show Net Sales and units by category, the top 5 products by units, stock vs sales for each product, and in-store vs online average discount and profit margin.
+<span class="pt">Context</span>Use the cleaned data. The owner wants to know what to promote for the holidays and whether online discounts are too deep.
+<span class="pt">Constraints</span>Use Net Sales = Price × Quantity × (1 − Discount/100) and profit = Net Sales − Unit cost × Quantity. Match product names between Sales and Inventory and list any that don't match. Tell me how many rows you used, and mark anything that's a guess.</div>
+<div class="tbl"><table><thead><tr><th>Category</th><th class="num">Net Sales</th><th class="num">Units</th></tr></thead><tbody>
+<tr><td>Whole Bean Coffee</td><td class="num">$2,858.55</td><td class="num">119</td></tr>
+<tr><td>Brewing Equipment</td><td class="num">$1,887.65</td><td class="num">25</td></tr>
+<tr><td>Subscriptions</td><td class="num">$645.30</td><td class="num">14</td></tr>
+<tr><td>Merchandise</td><td class="num">$499.80</td><td class="num">33</td></tr>
+<tr><td><b>Total</b></td><td class="num"><b>$5,891.30</b></td><td class="num"><b>191</b></td></tr>
+</tbody></table></div>
+<ul class="plain"><li><b>Sense check:</b> the categories add to $5,891.30 and use all 138 cleaned rows; online's deeper discount and lower margin point the same way.</li><li><b>Google Sheets:</b> <code>=SUMIF(E:E,"Whole Bean Coffee",K:K)</code> → 2,858.55 · <code>=SUMIF(D:D,"Online",H:H)</code> → 77</li><li><b>Name mismatch:</b> Inventory says “Colombia Huila 12 oz”, Sales says “Colombia Huila 12oz”. It's the top seller, so missing it hides the most important restock.</li></ul></details>
+
+<details><summary>H4 · Chart it</summary>
+<div class="tbl"><table><thead><tr><th>Maya asks</th><th>Best chart</th><th>A good title</th></tr></thead><tbody>
+<tr><td>What should we promote for the holidays?</td><td>Bar chart of Net Sales by category, high to low</td><td>“Whole bean coffee brings in nearly half of sales” (48.5%)</td></tr>
+<tr><td>Are our online discounts too deep?</td><td>Side-by-side bars, in-store vs online: discount 3.0% vs 15.0%, margin 56.6% vs 49.7%</td><td>“Online orders get five times the discount”</td></tr>
+</tbody></table></div>
+<div class="prompt" data-copy><span class="pt">Role</span>You are a data analyst who makes simple, clear charts for a business owner.
+<span class="pt">Task</span>Make two charts: Net Sales by category, highest to lowest; and in-store vs online average discount and profit margin, side by side.
+<span class="pt">Context</span>Use the cleaned data and the numbers we checked. The owner wants to see what to promote for the holidays and whether online discounts are too deep.
+<span class="pt">Constraints</span>Title each chart with what it shows, in plain words. Label the axes with units ($ or %). Start the bars at zero. List the numbers under each chart.</div>
+<p class="sub">A Whole Bean Coffee bar near $4,730 means the outlier from H2 is still in your data.</p></details>
+
+<details><summary>H5 · Read the comments</summary>
+<div class="prompt" data-copy><span class="pt">Role</span>You are a customer-feedback analyst.
+<span class="pt">Task</span>Give each of the 30 reviews one category and a sentiment: positive, negative or mixed.
+<span class="pt">Context</span>Coffee shop reviews. Some are sarcastic and one is in Spanish.
+<span class="pt">Constraints</span>Use only these 8 categories: Coffee taste &amp; freshness, Price &amp; value, Staff &amp; service, Online ordering &amp; shipping, Subscription management, Café atmosphere, Equipment quality, Other. Counts must total 30. For the top 3 complaints, quote 2 exact comments with their review IDs.</div>
+<ul class="plain"><li><b>C-01</b> Staff &amp; service, Positive · <b>C-02</b> Subscription management, Negative (sarcastic) · <b>C-03</b> Coffee taste &amp; freshness, Positive · <b>C-04</b> Online ordering &amp; shipping, Negative (Spanish) · <b>C-05</b> Price &amp; value, Mixed</li><li>Overall: 13 positive, 14 negative, 3 mixed.</li><li>Top complaints: subscription management (5), online ordering and shipping (5), equipment quality (3).</li></ul></details>
+
+<details><summary>H6 · Report</summary>
+<div class="prompt" data-copy><span class="pt">Context</span>Use only the numbers we checked in this chat.
+<span class="pt">Role</span>You are an analyst reporting to Maya, the owner of Corner Café.
+<span class="pt">Action</span>Write 3 findings with numbers (sales and reviews) and 2 recommendations, each with a simple 2-week test.
+<span class="pt">Format</span>Max 150 words, bullet points.
+<span class="pt">Tone</span>Plain and friendly. Say clearly what's a fact and what's a guess.</div>
+<p>A strong summary uses only checked numbers, for example: online discounts are five times deeper than in store (15.0% vs 3.0%) with a lower margin (49.7% vs 56.6%); the top seller, Colombia Huila, is nearly out of stock (5 left, 37 sold); and most complaints are about subscriptions and online orders. It ends with “Prepared with AI assistance; numbers checked by [your name].”</p></details>
+</details></section>
 
 <footer>Previous: <a href="https://asifakberali.github.io/southwest-ai/session-02/activities.html">Writing with AI →</a><br>Southwest AI · AI Made Practical | AI for Data · All data is made up.</footer>
 </main>

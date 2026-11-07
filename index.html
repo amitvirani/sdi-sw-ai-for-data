@@ -90,6 +90,32 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 @media print{header{background:none;color:#000;padding:10px 0}.copy,nav.tabs,.jump{display:none}.kicker,header p{color:#000}details{display:block}details>*{display:block}.part{background:none;color:#000;border:2px solid #000}.part h2{color:#000}}
 
 #ros td:first-child{white-space:nowrap}
+
+/* Slide color coding: matches the class deck (navy = Learn, amber = Activity, teal = Hands-on) */
+:root{--learn:#16324A;--act:#E8A33D;--hands:#2A7F7A;--learn-ink:#16324A;--hands-ink:#1F6B66}
+@media (prefers-color-scheme:dark){:root{--learn:#9DB9D3;--hands:#5CC2BB;--learn-ink:#c9d8e6;--hands-ink:#7fd3cc}}
+.time{background:none;color:var(--muted);border:1.5px solid var(--muted)}
+section.act.learn,section.act.hands{border-left:6px solid var(--learn);padding-left:18px}
+section.act.hands{border-left-color:var(--hands)}
+.slide{font-family:Calibri,"Segoe UI",system-ui,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.04em;color:#fff;background:#16324A;border-radius:99px;padding:2px 10px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.hands .slide,tr.hands .slide{background:#2A7F7A}
+td .slide{margin-left:0}
+.part.learn{background:#16324A;color:#F3E9DC}.part.learn h2{color:#fff}
+.part.hands{background:#2A7F7A;color:#fff}.part.hands h2{color:#fff}
+.part.learn .time,.part.hands .time{color:#F3E9DC;border-color:rgba(243,233,220,.6)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:10px 0 6px;font-size:.92rem}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:16px;height:16px;border-radius:4px}
+.sw.l{background:#16324A;box-shadow:0 0 0 1.5px rgba(243,233,220,.5)}.sw.a{background:#E8A33D}.sw.h{background:#2A7F7A}
+tr.learn td:first-child{box-shadow:inset 5px 0 var(--learn)}
+tr.hands td:first-child{box-shadow:inset 5px 0 var(--hands)}
+tr.grp td{font-size:.95rem}
+tr.grp.learn td{background:rgba(22,50,74,.10)}tr.grp.hands td{background:rgba(42,127,122,.14)}
+.chip{display:inline-block;font-weight:700;font-size:.85rem;border-radius:99px;padding:1px 10px;white-space:nowrap}
+.chip.learn{color:var(--learn-ink);border:1.5px solid var(--learn)}
+.chip.hands{color:var(--hands-ink);border:1.5px solid var(--hands)}
+@media print{section.act.learn,section.act.hands{border-left-width:4px}.part.learn,.part.hands{color:#000}.part.learn h2,.part.hands h2{color:#000}}
+@media (prefers-color-scheme:dark){.slide{background:#9DB9D3;color:#0f2133}.hands .slide,tr.hands .slide{background:#5CC2BB;color:#0f2133}}
 </style>
 </head>
 <body>
@@ -103,7 +129,9 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <div class="warn"><h2>Before you start</h2>
 <p><b>Remove before you upload.</b> Delete names, phones and emails, and check free text, where they hide. A screenshot is still an upload.</p>
 <p><b>One Claude chat per dataset.</b> Stay in one chat for all six steps so Claude remembers the cleaning you did.</p>
-<p><b>No number leaves your hands unchecked.</b> Every step ends with a green Check box. Do it before you move on.</p></div>
+<p><b>No number leaves your hands unchecked.</b> Every step ends with a green Check box. Do it before you move on.</p>
+<p class="sub">Colors and slide numbers on this page match the class slides:</p><div class="legend" aria-label="Slide colors"><span><i class="sw l"></i>Navy · Learn: watch and listen</span><span><i class="sw a"></i>Amber · Activity</span><span><i class="sw h"></i>Teal · Hands-on: your own laptop</span></div>
+</div>
 
 <nav class="jump" aria-label="Jump to a section"><a href="#files">Files</a><a href="#sheets">Google Sheets basics</a><a href="#steps">The six steps</a><a href="#ask">How to ask AI</a><a href="#s1">1 Understand</a><a href="#s2">2 Clean</a><a href="#s3">3 Answer</a><a href="#s4">4 Chart</a><a href="#s5">5 Comments</a><a href="#s6">6 Report</a><a href="#hands">Your turn</a><a href="#resp">Using AI responsibly</a><a href="#exit">Exit ticket</a></nav>
 
@@ -126,7 +154,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <div class="card"><h3>Check a number</h3><ol class="steps"><li>Click an empty cell, like <code>M1</code></li><li>Paste the formula from the Check box</li><li>Press Enter, compare with Claude</li></ol><p class="ex">Find anything with Ctrl+F (Cmd+F on Mac).</p></div>
 </div></section>
 
-<section class="act" id="steps"><h2>The six steps of any analysis</h2>
+<section class="act learn" id="steps"><h2>The six steps of any analysis <span class="slide">Slide 2</span></h2>
 <p class="sub">Every demo and every hands-on step today is one of these, and each ends with a check.</p>
 <div class="tbl"><table><thead><tr><th>Step</th><th>The question it answers</th><th>How you check it</th></tr></thead><tbody>
 <tr><td><b>1 · Understand the data</b></td><td>What does one row mean, and what can this data answer?</td><td>Count the rows with <code>=COUNTA</code></td></tr>
@@ -137,7 +165,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <tr><td><b>6 · Report</b></td><td>What should the owner do next?</td><td>Every number traced to a check</td></tr>
 </tbody></table></div></section>
 
-<section class="act" id="ask"><h2>How to ask AI</h2>
+<section class="act learn" id="ask"><h2>How to ask AI <span class="slide">Slide 5 · 2 min</span></h2>
 <div class="why"><b>Why:</b> a vague request like “Analyze this data” lets the AI pick its own question, use bad rows and skip checks.</div>
 <p class="sub">A good request has four parts. Every prompt on this page is labeled with them.</p>
 <div class="grid">
@@ -148,9 +176,9 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 </div>
 <p class="sub">Step 6 is different: the AI writes for a person, so the parts become Context, Role, Action, Format and Tone.</p></section>
 
-<div class="part"><h2>Part 1 · PhoneHub, watch</h2><p>Your instructor runs every step on screen. The prompts are here so you can reuse them later.</p></div>
+<div class="part learn"><h2>Part 1 · PhoneHub, watch</h2><p>Slides 5–15, navy. Your instructor runs every step on screen. The prompts are here so you can reuse them later.</p></div>
 
-<section class="act" id="s1"><h2>Step 1 · Understand the data <span class="time">Demo 1</span></h2>
+<section class="act learn" id="s1"><h2>Step 1 · Understand the data <span class="slide">Slide 6 · 3 min</span></h2>
 <div class="why"><b>Why:</b> if you think one row is one customer but it's really one sale, every number after that is wrong.</div>
 <p class="label">Protect first</p>
 <ul class="check">
@@ -167,7 +195,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <div class="prompt" data-copy>=COUNTA(A:A)-1</div></div>
 <details><summary>Show the answer</summary><p>One Sales row = one sale of one model, at one store, on one date. Sales 128 rows, Inventory 13, Reviews 40. The data can't tell us <i>why</i> customers bought: no column records it.</p></details></section>
 
-<section class="act" id="s2"><h2>Step 2 · Clean the data <span class="time">Demo 2</span></h2>
+<section class="act learn" id="s2"><h2>Step 2 · Clean the data <span class="slide">Slides 7–9 · 9 min</span></h2>
 <div class="why"><b>Why:</b> AI uses bad data without noticing, and it only checks for the problems you name.</div>
 <p class="label">First: spot the AI mistake</p>
 <p>I asked AI to sum up PhoneHub's 2025 sales. There's one big mistake. What is it, and how would you check it?</p>
@@ -204,7 +232,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <ul class="plain"><li>Brand spelled different ways: apple, APPLE, Samsng, “Samsung ” with a space, Moto</li><li>Pixel 10 filed under Samsung (2 rows). Most people miss this one!</li><li>One duplicate sale (S-1106)</li><li>Five blank discounts. We assume 0; write that down, the owner might disagree.</li><li>Four wrong Net_Sales values</li><li>One sale dated July 2, outside the period</li></ul>
 <p>After cleaning: <b>126 rows</b>.</p></details></section>
 
-<section class="act" id="s3"><h2>Step 3 · Answer the question <span class="time">Demo 3</span></h2>
+<section class="act learn" id="s3"><h2>Step 3 · Answer the question <span class="slide">Slides 10–12 · 9 min</span></h2>
 <div class="why"><b>Why:</b> analysis starts with the business question, not the prompt. If you don't know what you're trying to find out, neither does the AI.</div>
 <p class="label">First: turn each question into measures</p>
 <ol class="steps"><li>What will the owner decide?</li><li>Which numbers would change that decision?</li><li>Which columns hold those numbers?</li></ol>
@@ -237,7 +265,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 </tbody></table></div>
 <p class="sub">Don't match? Ask Claude: <code>Show the exact filters and rows you used.</code> If an average differs, ask whether it averaged per row or per unit sold.</p></div></section>
 
-<section class="act" id="s4"><h2>Step 4 · Chart it <span class="time">Demo 4</span></h2>
+<section class="act learn" id="s4"><h2>Step 4 · Chart it <span class="slide">Slide 13 · 3 min</span></h2>
 <div class="why"><b>Why:</b> a chart shows the pattern at a glance, and a bad number, like July's, jumps out.</div>
 <p class="label">First: pick the chart that fits the question</p>
 <div class="tbl"><table><thead><tr><th>You want to show</th><th>Use</th><th>PhoneHub example</th></tr></thead><tbody>
@@ -252,7 +280,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <span class="pt">Constraints</span>Title each chart with what it shows, in plain words. Label the axes with units ($ or %). Start the bars at zero. List the numbers under each chart.</div>
 <div class="verify"><p class="label">Check · Against your numbers</p><p>Does Apple's bar show $56,293.10? Do all bars start at zero? Can't get a chart? In Google Sheets, select a small table of totals and use <b>Insert → Chart</b>.</p></div></section>
 
-<section class="act" id="s5"><h2>Step 5 · Read the comments <span class="time">Demo 5</span></h2>
+<section class="act learn" id="s5"><h2>Step 5 · Read the comments <span class="slide">Slide 14 · 3 min</span></h2>
 <div class="why"><b>Why:</b> the numbers show what happened; reviews hint at why. AI sorts them in seconds, but you check how well.</div>
 <p class="sub">First, label these five yourself, so you have something to judge the AI against. Three are tricky on purpose.</p>
 <p class="label">Categories</p><p>Product quality · Price &amp; trade-in · Staff knowledge · Activation &amp; setup · Online shipping · Financing &amp; payment · Store experience · Other</p>
@@ -271,7 +299,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <div class="verify"><p class="label">Check · Three ways</p><ol class="steps"><li>Do the counts total 40?</li><li>Ctrl+F one quote in the Reviews tab. Is it there word for word?</li><li>How many of your five labels match Claude's? __ / 5</li></ol></div>
 <details><summary>Show the answers</summary><ul class="plain"><li>R-01 Staff knowledge, Positive</li><li>R-02 Online shipping, Negative (sarcastic)</li><li>R-03 Activation &amp; setup, Negative (Spanish: eSIM activation took over an hour)</li><li>R-04 Online shipping, Positive</li><li>R-05 Price &amp; trade-in, Mixed (loves the phone, not the trade-in)</li></ul><p>Top complaints: online shipping, price and trade-in, and activation and setup.</p></details></section>
 
-<section class="act" id="s6"><h2>Step 6 · Report <span class="time">Demo 6</span></h2>
+<section class="act learn" id="s6"><h2>Step 6 · Report <span class="slide">Slide 15 · 2 min</span></h2>
 <div class="why"><b>Why:</b> the owner doesn't want tables. He wants to know what the numbers mean and what to do. The report is only as good as the checked numbers you give it.</div>
 <p class="sub">Here the AI writes for a person, so the parts are Context, Role, Action, Format and Tone.</p>
 <div class="prompt" data-copy><span class="pt">Context</span>Use only the numbers we checked in this chat.
@@ -282,9 +310,9 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <ul class="check"><li>Delete any number you didn't check.</li><li>Add: “Prepared with AI assistance; numbers checked by [your name].”</li></ul>
 <div class="verify"><p class="label">Check · Trace every number</p><p>Point at each number in the summary. Can you show where you checked it? If not, check it or delete it.</p></div></section>
 
-<div class="part" id="hands"><h2>Part 2 · Corner Café, your turn</h2><p>The same six steps on a business you haven't seen. About 47 minutes, on your own.</p></div>
+<div class="part hands" id="hands"><h2>Part 2 · Corner Café, your turn</h2><p>Slides 16–22, teal. The same six steps on a business you haven't seen. About 47 minutes, on your own.</p></div>
 
-<section class="act"><h2>The brief</h2>
+<section class="act hands"><h2>Meet Corner Café <span class="slide">Slide 16 · 2 min</span></h2>
 <div class="why"><b>Why:</b> same steps, new data. This is how you know you learned the method, not just the answers.</div>
 <p>Corner Café is a coffee shop with two cafés (Austin and Nashville) and an online store. It sells coffee beans, brewing gear, mugs and subscriptions. The owner, <b>Maya</b>, asks: <i>What should we promote for the holidays? Are our online discounts too deep?</i></p>
 <div class="grid">
@@ -293,7 +321,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 </div>
 <p class="label">Corner Café columns</p><p><b>Order_ID</b> (instead of Sale_ID) · <b>Category</b> (instead of Brand) · <b>Product</b> (instead of Model)</p></section>
 
-<section class="act" id="h1"><h2>H1 · Understand the data: learn what one row means <span class="time">6 min</span></h2>
+<section class="act hands" id="h1"><h2>H1 · Understand the data: learn what one row means <span class="slide">Slide 17 · 6 min</span></h2>
 <div class="why"><b>Remember Demo 1:</b> you can't analyze data until you know what one row means.</div>
 <ul class="check"><li>Open <code>corner_cafe_sales.xlsx</code> in Google Sheets. Reviews tab: delete <b>Customer_Name</b>, <b>Phone</b> and <b>Email</b>.</li><li>Two reviews also hide personal details in their text. Find and replace them.</li><li>Download as .xlsx and attach it to a new Claude chat.</li></ul>
 <p>Ask Claude to explain the file. Demo 1's prompt is your model. Make sure you ask for:</p>
@@ -306,7 +334,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <label for="row1">One Sales row = </label><input class="field" id="row1" type="text">
 <div class="verify"><p class="label">Check</p><p>Does <code>=COUNTA(A:A)-1</code> on each tab match the AI's row counts?</p></div></section>
 
-<section class="act" id="h2"><h2>H2 · Clean the data: fix what would skew the totals <span class="time">9 min</span></h2>
+<section class="act hands" id="h2"><h2>H2 · Clean the data: fix what would skew the totals <span class="slide">Slide 18 · 9 min</span></h2>
 <div class="why"><b>Remember Demo 2:</b> the AI only finds the problems you name.</div>
 <ol class="steps">
 <li>Ask Claude to find problems, and name the five mistakes from Demo 2. Use Corner Café's columns: Order_ID, Category, Product.</li>
@@ -316,7 +344,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 </ol>
 <div class="verify"><p class="label">Check</p><p>Find one changed Order_ID with Ctrl+F, then recompute it with <code>=G2*H2*(1-I2/100)</code>, using that row's number.</p></div></section>
 
-<section class="act" id="h3"><h2>H3 · Answer the question: find what to promote and restock, and check the numbers <span class="time">11 min</span></h2>
+<section class="act hands" id="h3"><h2>H3 · Answer the question: find what to promote and restock, and check the numbers <span class="slide">Slide 19 · 11 min</span></h2>
 <div class="why"><b>Remember Demo 3:</b> start with Maya's decision, decide what to measure, then ask Claude.</div>
 <p class="label">Step 1, on paper: what will Maya decide, and which numbers would change it?</p>
 <div class="tbl"><table><thead><tr><th>Maya asks</th><th>So I'll measure</th><th>What the answer would look like</th></tr></thead><tbody>
@@ -333,7 +361,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <p class="label">Units sold online</p><div class="prompt" data-copy>=SUMIF(D:D,"Online",H:H)</div>
 <p>One product name doesn't match between Sales and Inventory. Did you catch it? It decides what to restock.</p></div></section>
 
-<section class="act" id="h4"><h2>H4 · Chart it: show Maya the answer at a glance <span class="time">7 min</span></h2>
+<section class="act hands" id="h4"><h2>H4 · Chart it: show Maya the answer at a glance <span class="slide">Slide 20 · 7 min</span></h2>
 <div class="why"><b>Remember Demo 4:</b> pick the chart that fits the question first, then ask for it.</div>
 <div class="tbl"><table><thead><tr><th>Maya asks</th><th>The chart I'll make</th></tr></thead><tbody>
 <tr><td>What should we promote for the holidays?</td><td><input class="cell" aria-label="Promote: chart"></td></tr>
@@ -342,7 +370,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <p>Ask Claude for the two charts. Your request should say who makes them (someone who makes simple charts for an owner), which two charts and the order of the bars, which data to use and what Maya wants to see, and the rules: a title that says what each chart shows, units on the axes, bars that start at zero, and the numbers listed under each chart.</p>
 <div class="verify"><p class="label">Check</p><p>Does the Whole Bean Coffee bar show <b>$2,858.55</b>? If it shows about $4,730, the outlier from H2 is back in your data. Do all bars start at zero? Can't get a chart? Select the category totals in Google Sheets and use <b>Insert → Chart</b>.</p></div></section>
 
-<section class="act" id="h5"><h2>H5 · Read the comments: find Maya's top complaints <span class="time">6 min</span></h2>
+<section class="act hands" id="h5"><h2>H5 · Read the comments: find Maya's top complaints <span class="slide">Slide 21 · 6 min</span></h2>
 <div class="why"><b>Remember Demo 5:</b> label a few reviews yourself first, so you can judge the AI.</div>
 <div class="tbl"><table><thead><tr><th>ID</th><th>Review</th><th>My category</th><th>My sentiment</th><th>AI agrees?</th></tr></thead><tbody>
 <tr><td>C-01</td><td class="review"><span class="stars">★★★★★</span> [staff] at the South Congress bar dialed in my pour-over and explained roast dates. Best coffee in town.</td><td><input class="cell" aria-label="C-01 category"></td><td><input class="cell" aria-label="C-01 sentiment"></td><td><input class="cell" aria-label="C-01 agree"></td></tr>
@@ -355,13 +383,13 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <p>Ask Claude to sort all 30 reviews into these categories. What must your request say so you can check the answer? Think of the fixed categories, the total, and exact quotes.</p>
 <div class="verify"><p class="label">Check</p><p>Counts total 30 · one quote found word for word with Ctrl+F · your labels match __ / 5</p></div></section>
 
-<section class="act" id="h6"><h2>H6 · Report: a checked summary for Maya <span class="time">6 min</span></h2>
+<section class="act hands" id="h6"><h2>H6 · Report: a checked summary for Maya <span class="slide">Slide 22 · 6 min</span></h2>
 <div class="why"><b>Remember Demo 6:</b> the report uses only the numbers you checked in H1–H5.</div>
 <ol class="steps"><li>Ask Claude for a summary for Maya: 3 findings with numbers (sales and reviews) and 2 recommendations, each with a 2-week test, in under 150 words, in plain language. Demo 6's prompt is your model.</li><li>Delete any number you didn't check.</li><li>Add: “Prepared with AI assistance; numbers checked by [your name].”</li></ol>
 <div class="verify"><p class="label">Check</p><p>Point at each number. Can you show where you checked it in your log below? If not, check it or delete it.</p></div>
 <p class="sub"><b>Finished early?</b> Compare Austin and Nashville, or ask Claude for a simple dashboard and check one number on it against your Google Sheets total.</p></section>
 
-<section class="act" id="log"><h2>My checks</h2>
+<section class="act hands" id="log"><h2>My checks</h2>
 <p class="sub">One row per check. Nothing here is saved; screenshot or copy it if you want to keep it.</p>
 <div class="tbl"><table><thead><tr><th>Check</th><th>AI value</th><th>How I checked</th><th>My value</th><th>Match?</th></tr></thead><tbody>
 <tr><td>Sales row count</td><td><input class="cell" aria-label="row count AI"></td><td>=COUNTA(A:A)-1</td><td><input class="cell" aria-label="row count mine"></td><td><input class="cell" aria-label="row count match"></td></tr>
@@ -372,7 +400,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <tr><td>One quote exists</td><td><input class="cell" aria-label="quote"></td><td>Ctrl+F in Reviews</td><td>—</td><td><input class="cell" aria-label="quote match"></td></tr>
 </tbody></table></div></section>
 
-<section class="act" id="resp"><h2>Using AI responsibly</h2>
+<section class="act learn" id="resp"><h2>Using AI responsibly <span class="slide">Slide 23 · 3 min</span></h2>
 <div class="why"><b>Why:</b> AI makes analysis fast, but you're responsible for what goes into the tool and for every number that comes out.</div>
 <div class="grid">
 <div class="card"><h3>Privacy</h3><p class="ex">Remove names, emails, phone numbers and ID numbers before you upload, including ones hidden in free text. At work, use only AI tools your organization approves.</p></div>
@@ -387,12 +415,12 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <p class="label">Before you use AI on real work data, tick all four</p>
 <ul class="check"><li>This tool is approved by my organization for this kind of data.</li><li>I removed names, contact details, IDs and anything confidential, including in free text.</li><li>I checked the key numbers, and marked guesses as guesses.</li><li>My report says AI assisted, and names who checked it.</li></ul></section>
 
-<section class="act" id="exit"><h2>Exit ticket</h2>
+<section class="act learn" id="exit"><h2>Exit ticket <span class="slide">Slide 25</span></h2>
 <label for="e1">One number I checked today:</label><input class="field" id="e1" type="text">
 <label for="e2">One report at work I'll try this on (made-up data, or real data in an approved tool only):</label><input class="field" id="e2" type="text">
 <p class="sub">Practice on made-up data, use real data only in approved tools, and check every number.</p></section>
 
-<section class="act"><h2>Take-home</h2>
+<section class="act learn"><h2>Take-home <span class="slide">Slide 25</span></h2>
 <p class="sub">About 45 minutes. Finish Corner Café; everything works on free plans.</p>
 <ul class="check"><li>Finish any H1–H6 steps you didn't complete</li><li>Make two charts</li><li>Compare Austin and Nashville: one finding with a number</li><li>A “My checks” log with at least 4 checks</li><li>A one-page summary for Maya, ending with the AI-assistance line and your name</li></ul>
 <p>Submit one folder named <code>Firstname_Lastname_AIforData</code> with your summary, your checks, two chart images and <code>prompts.txt</code> (your 5 most useful prompts).</p></section>

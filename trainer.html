@@ -128,6 +128,15 @@ section.act.learn .card{border:1px solid #E4DDD2}
 section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{color:var(--hands-ink)}
 
 :root{color-scheme:light}
+
+/* Hands-on solutions: tucked away at the bottom of the participant page */
+section.solutions{margin-top:72px;border-top:1px solid rgba(128,128,128,.25);padding-top:10px}
+details.sol-outer{background:none;padding:4px 0;margin:0}
+details.sol-outer > summary{font-weight:400;font-size:.85rem;color:var(--muted);list-style:none}
+details.sol-outer > summary::-webkit-details-marker{display:none}
+details.sol-outer > summary::before{content:"+ "}
+details.sol-outer[open] > summary::before{content:"− "}
+details.sol-outer details{background:#FFFDF9;border:1px solid #E4DDD2}
 </style>
 </head>
 <body>

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Trainer Guide · AI for Data</title>
-<meta name="description" content="Minute-by-minute trainer script for AI for Data: what to click, what to say, what to expect, answer keys and fixes.">
+<meta name="description" content="Slide-by-slide trainer script for AI for Data: what to click, what to say, what to expect, answer keys and fixes.">
 <style>
 :root{--ink:#16324A;--amber:#E8A33D;--terra:#C8553D;--sand:#F3E9DC;--slate:#4A5A68;--teal:#2A7F7A;--brick:#A63D2F;--bg:#fff;--fg:#16324A;--muted:#4A5A68;--card:#F3E9DC;--code:#fff}
 @media (prefers-color-scheme:dark){:root{--bg:#0f2133;--fg:#F3E9DC;--muted:#b8c4cf;--card:#1b3a55;--code:#16324A;--terra:#F08A6F;--teal:#5CC2BB;--brick:#F28B7C}}
@@ -28,6 +28,7 @@ a{color:inherit}
 .card .ex{font-size:.92rem;color:var(--muted);margin:0;font-style:italic}
 .prompt{position:relative;background:var(--code);border:1.5px solid var(--fg);border-radius:10px;padding:16px 64px 16px 18px;margin:12px 0;white-space:pre-wrap}
 .prompt .ph{color:var(--terra);font-weight:700}
+.prompt .pt{display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--teal);border:1.5px solid var(--teal);border-radius:99px;padding:0 8px;margin-right:8px;vertical-align:2px;user-select:none}
 .prompt .dl{color:var(--teal);font-weight:700}
 .copy{position:absolute;top:10px;right:10px;border:0;border-radius:8px;background:var(--fg);color:var(--bg);font:inherit;font-size:.8rem;font-weight:700;padding:6px 10px;cursor:pointer}
 .copy:focus-visible{outline:3px solid var(--amber)}
@@ -87,6 +88,8 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 .secret{background:var(--brick);color:#fff;border-radius:12px;padding:10px 18px;margin:24px 0 0;font-weight:700}
 @media (max-width:560px){h1{font-size:1.9rem}.split{grid-template-columns:1fr;gap:2px}}
 @media print{header{background:none;color:#000;padding:10px 0}.copy,nav.tabs,.jump{display:none}.kicker,header p{color:#000}details{display:block}details>*{display:block}.part{background:none;color:#000;border:2px solid #000}.part h2{color:#000}}
+
+#ros td:first-child{white-space:nowrap}
 </style>
 </head>
 <body>
@@ -99,167 +102,143 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <main class="wrap">
 <div class="secret">Trainer only. This page holds every answer. Don't link it from the participant page or share its URL with the room.</div>
 
-<nav class="jump" aria-label="Jump to a section"><a href="#before">Before class</a><a href="#resp">Responsible AI</a><a href="#a">Part A</a><a href="#b">Part B</a><a href="#c">Part C</a><a href="#wrap">Wrap</a><a href="#fix">Fixes</a><a href="#keyph">Key: PhoneHub</a><a href="#keyck">Key: Copper Kettle</a></nav>
+<nav class="jump" aria-label="Jump to a section"><a href="#before">Before class</a><a href="#a">Part A</a><a href="#b">Part B</a><a href="#c">Part C</a><a href="#wrap">Wrap</a><a href="#fix">Fixes</a><a href="#keyph">Key: PhoneHub</a><a href="#keycc">Key: Corner Café</a></nav>
 
 <section class="act" id="before"><h2>Before class</h2>
 <div class="grid">
-<div class="card"><h3>Your screen</h3><ul class="plain"><li>Claude, new chat, nothing attached</li><li><code>phonehub_sales.xlsx</code> open in Google Sheets</li><li>This guide on a second screen or tablet</li><li>Screenshots folder from your dry run</li></ul></div>
-<div class="card"><h3>Room</h3><ul class="plain"><li>Slower participants on aisle seats near the front</li><li>Participant page URL on the board</li><li>Spot the Bad Number cards, one per person (optional)</li><li>Timer visible to you</li></ul></div>
-<div class="card"><h3>Backups</h3><ul class="plain"><li>Backup dashboard HTML</li><li>Clean files on the page</li><li>Screenshots of every step</li><li>Hotspot if wifi dies</li></ul></div>
+<div class="card"><h3>Your screen</h3><ul class="plain"><li>The slide deck</li><li>Claude, new chat, nothing attached</li><li><code>phonehub_sales.xlsx</code> open in Google Sheets</li><li>This guide on a second screen or tablet</li></ul></div>
+<div class="card"><h3>Room</h3><ul class="plain"><li>Slower participants on aisle seats near the front</li><li>Participant page URL on the board</li><li>Timer visible to you</li></ul></div>
+<div class="card"><h3>Backups</h3><ul class="plain"><li>Clean files on the participant page</li><li>Screenshots of every demo output</li><li>Hotspot if wifi dies</li></ul></div>
 </div>
 <p class="label">How each step below is written</p>
-<div class="split"><b>Why</b><span>The one line you say before starting, so they know what it's for.</span></div>
+<div class="split"><b>Why</b><span>The one line you say first, so learners know what it's for.</span></div>
 <div class="split"><b>Do</b><span>What you click or paste on the projector.</span></div>
 <div class="split"><b>Say</b><span><span class="say">Lines in italics are a suggested script.</span></span></div>
 <div class="split"><b>Expect</b><span>What the output should show. Exact numbers are in the answer keys.</span></div>
 <div class="split"><b>Watch for</b><span>Where people get stuck, and the fix.</span></div></section>
 
-<section class="act" id="resp"><h2>Teaching responsible AI use</h2>
-<div class="why"><b>Why:</b> participants will take these habits to work with real data, where a leaked customer list or an unchecked number has real consequences.</div>
-<p>Don't lecture it all at the start. Introduce the five habits in Part A, then name the habit each time it comes up. Participants have the full reference in the “Using AI responsibly” section of their page.</p>
+<div class="part" id="a"><h2>Part A · Basics <span class="time">0–5 min</span></h2><p>Slides 1–4: the promise, the six steps, the goals, and where AI slips.</p></div>
 
-<p class="label">Five habits, in one breath (Three rules segment, 9–15)</p>
-<div class="split"><b>Say</b><span class="say">“Five habits today. Protect: remove personal data before upload. Approve: real work data only in an approved tool. Verify: check every number. Label: fact or guess. Disclose: say AI helped and who checked it. You'll practice all five before you leave.”</span></div>
-<div class="split"><b>Do</b><span>If time allows, run the green/amber/red quick check on their page out loud (2 min); otherwise assign it for the take-home. Answers: 1 Green, 2 Amber, 3 Green, 4 Red, 5 Amber, 6 Red, 7 Green.</span></div>
+<section class="act"><h2>Title, outline, goals <span class="time">0–4</span><span class="who">Slides 1–3</span></h2>
+<div class="split"><b>Say</b><span class="say">“Today you'll use AI to answer real business questions from a spreadsheet, then check every number before you share it. Every analysis follows six steps: understand the data, clean it, answer the question, chart it, read the comments, report. You'll watch me do all six on a phone store, then do them yourself on a coffee shop.”</span></div>
+<div class="split"><b>Do</b><span>Point out the color strip: navy = watch, teal = your own laptop. All data is made up, so it's safe to upload anywhere.</span></div></section>
 
-<p class="label">Name the habit when it happens</p>
-<div class="tbl"><table><thead><tr><th>Moment</th><th>Habit</th><th>Line to say</th></tr></thead><tbody>
-<tr><td>Setup: deleting columns, finding the name and email in R-01 and R-22</td><td>Protect</td><td class="say">“The columns were the easy part. Personal details hide in free text.”</td></tr>
-<tr><td>Step 1 Verify box</td><td>Verify</td><td class="say">“That's the C in CHECK: confirm the scope.”</td></tr>
-<tr><td>Step 2, blank discounts set to 0</td><td>Label</td><td class="say">“That's our assumption, not a fact. Write it down.”</td></tr>
-<tr><td>Step 3, “what can't this data answer?”</td><td>Label</td><td class="say">“Any ‘why’ here is a Hypothesis.”</td></tr>
-<tr><td>Step 6, quote check</td><td>Verify</td><td class="say">“If the quote isn't in the sheet word for word, the AI made it up.”</td></tr>
-<tr><td>H6 summary sign-off</td><td>Disclose</td><td class="say">“Your name goes on it. You own the numbers, not the AI.”</td></tr>
-<tr><td>Exit ticket</td><td>Approve</td><td class="say">“Next week: fake data, or real data in an approved tool. Then verify again.”</td></tr>
-</tbody></table></div>
+<section class="act"><h2>What AI does well, and where it slips <span class="time">4–5</span><span class="who">Slide 4</span></h2>
+<div class="split"><b>Say</b><span class="say">“It reads a whole spreadsheet in seconds. It also trusts bad data, fills gaps quietly, and sounds just as sure when it's wrong. You'll see these slips in the demos.”</span></div></section>
 
-<p class="label">Questions people usually ask</p>
-<div class="split"><b>“Can I use this at work?”</b><span>Only with tools and data your organization has approved. Ask IT or your manager what's allowed before you upload anything real. Don't guess.</span></div>
-<div class="split"><b>“Does the AI keep my data?”</b><span>It depends on the tool, the plan and its settings, and it can change. Point people to their organization's policy and the tool's own data settings rather than promising either way. When unsure, share less: describe the data instead of uploading it.</span></div>
-<div class="split"><b>“Isn't removing names enough?”</b><span>Not always. A rare job title plus a small store can identify someone. Generalize or aggregate when you only need patterns.</span></div>
-<div class="split"><b>“If the AI is usually right, why check?”</b><span>Point back to Spot the Bad Number: Answer A looked right and was off by $2,222.70. One unchecked number can undo a whole report.</span></div>
-<div class="split"><b>“Can I use it to review my team?”</b><span>Don't use AI to judge named individuals. Use it for patterns across groups, and keep people decisions with people.</span></div>
+<div class="part" id="b"><h2>Part B · Watch on PhoneHub <span class="time">5–36 min</span></h2><p>Slides 5–15. You run each step; learners watch. Each step ends with a check.</p></div>
 
-<p class="label">Step in if you see</p>
-<ul class="plain"><li>Someone uploading a real work file “just to try it” → stop them kindly, and point to the five-point workplace checklist on their page.</li><li>A summary with a “because” and no label → ask “Calculation, Finding or Hypothesis?”</li><li>Someone copying Claude's summary without checking → “Show me where you verified that number.”</li></ul>
-</section>
+<section class="act"><h2>Step 1 · How to ask AI <span class="time">5–7</span><span class="who">Slide 5</span></h2>
+<div class="why"><b>Why:</b> a vague request like “Analyze this data” lets the AI pick its own question, use bad rows and skip checks.</div>
+<div class="split"><b>Say</b><span class="say">“A good request has four parts. Who would I hire? What exactly do I want back? What would a new coworker need to know? How could this go wrong, and what rule stops it? Every demo labels its prompt with these, so you won't need to memorize the letters.”</span></div>
+<div class="split"><b>Note</b><span>This is the only slide on RTCC. Don't teach the letters again later; just point at the labels.</span></div></section>
 
-<div class="part" id="a"><h2>Part A · Warm-up <span class="time">0–15 min</span></h2><p>A quick demo, a no-tool puzzle, then setup step by step.</p></div>
-
-<section class="act"><h2>Opening demo: one prompt finds the problems <span class="time">0–4</span><span class="who">You only</span></h2>
-<div class="why"><b>Why:</b> show what one prompt can do in 30 seconds, so everyone wants to learn how.</div>
-<div class="split"><b>Do</b><span>Attach <code>phonehub_sales.xlsx</code> to Claude and run:</span></div>
-<div class="prompt" data-copy>Run a quick data quality check on the Sales sheet. What are the 3 biggest problems you can see?</div>
-<div class="split"><b>Say</b><span class="say">“That took 20 seconds. By the end of class you'll do this yourself, and you'll know when not to trust it.”</span></div>
-<div class="split"><b>Expect</b><span>Some of: brand spellings (apple, Samsng, Moto), duplicate S-1106, blank discounts, July sale. If nothing clear comes back, show your screenshot. Don't explain yet.</span></div></section>
-
-<section class="act"><h2>Spot the Bad Number <span class="time">4–9</span><span class="who">On their own</span></h2>
-<div class="why"><b>Why:</b> AI numbers can be confidently wrong, so learn to spot a bad one before touching any tool.</div>
-<div class="split"><b>Do</b><span>Everyone reads the cards on their own (also on the participant page) for two minutes, then take answers from the room.</span></div>
-<div class="split"><b>Say</b><span class="say">“Which one would hurt you most if you sent it to your boss?”</span></div>
-<div class="split"><b>Expect</b><span><b>A</b> wrong scope: raw total $118,973.68 from 128 rows vs correct $116,750.98 from 126. <b>B</b> number right, “because” invented. <b>C</b> trust after a check. Then introduce CHECK in one breath: Confirm scope, Hand-check one, Expose the method, Cross-check, Keep a log.</span></div></section>
-
-<section class="act"><h2>Five habits + setup <span class="time">9–15</span><span class="who">Everyone</span></h2>
-<div class="why"><b>Why:</b> personal data must be removed before it reaches an AI tool, and this is the habit they take to work.</div>
-<div class="split"><b>Say</b><span>Introduce the five habits using the script in <a href="#resp">Teaching responsible AI use</a> (1 min), then go straight into setup.</span></div>
-<div class="split"><b>Do</b><span>Click through setup slowly on the projector, pausing after each step until most hands are up:</span></div>
-<ol class="steps"><li>Download from the participant page → <b>sheets.new</b> → <b>File → Import → Upload</b> → <b>Replace spreadsheet</b></li><li>Reviews tab: right-click column letters for Customer_Name, Phone, Email → <b>Delete column</b></li><li>Fix R-01 (staff name “Marcus”) and R-22 (an email) → <code>[staff]</code>, <code>[email]</code></li><li><b>File → Download → Microsoft Excel (.xlsx)</b></li><li>New Claude chat → attach → wait for the file chip</li></ol>
-<div class="split"><b>Watch for</b><span>People attaching the original download instead of their Sheets export. Quick check in Claude: <code>Does the Reviews sheet have Name, Phone or Email columns?</code> If yes, wrong file. Import dialog defaulting to “Insert new sheet(s)”. Mac users needing Cmd instead of Ctrl.</span></div></section>
-
-<div class="part" id="b"><h2>Part B · Guided practice on PhoneHub <span class="time">15–55 min</span></h2><p>Every step: you show it, they run it, everyone verifies one thing before moving on.</p></div>
-
-<section class="act"><h2>Step 1 · Describe <span class="time">15–20</span></h2>
-<div class="why"><b>Why:</b> if you and the AI disagree on what one row means, every number after it is wrong.</div>
-<div class="split"><b>Say</b><span class="say">“This is the D in DATA: Describe. Before analysis, make sure you and the AI agree on what one row is.”</span></div>
-<div class="split"><b>Expect</b><span>One Sales row = one sale of one model (qty 1–3) at one store on one date. Sales 128, Inventory 13, Reviews 40. Inventory = stock on Jun 30, 2026, not a running total.</span></div>
-<div class="split"><b>Verify</b><span><code>=COUNTA(A:A)-1</code> on each tab in Google Sheets.</span></div>
+<section class="act"><h2>Demo 1 · Understand the data <span class="time">7–10</span><span class="who">Slide 6</span></h2>
+<div class="why"><b>Why:</b> if you think one row is one customer but it's really one sale, every number after that is wrong.</div>
+<div class="split"><b>Do</b><span>Protect first, live: open <code>phonehub_sales.xlsx</code> in Google Sheets (File → Import → Upload → Replace spreadsheet). In Reviews, delete Customer_Name, Phone and Email; replace the staff name “Marcus” in R-01 and the email in R-22. Download as .xlsx, attach to a new Claude chat, paste the Demo 1 prompt.</span></div>
+<div class="split"><b>Say</b><span class="say">“The columns were the easy part. Personal details hide in free text.”</span></div>
+<div class="split"><b>Expect</b><span>One Sales row = one sale of one model, at one store, on one date. 5 questions, each naming its columns. Can't tell us why customers bought.</span></div>
+<div class="split"><b>Check</b><span><code>=COUNTA(A:A)-1</code> on each tab: 128, 13, 40.</span></div>
 <div class="split"><b>Watch for</b><span>Claude reading only one sheet → <code>Please read all three sheets.</code></span></div></section>
 
-<section class="act"><h2>Step 2 · Check and clean <span class="time">20–27</span></h2>
-<div class="why"><b>Why:</b> messy data produces confident wrong answers, and AI only finds the problems you ask it to look for.</div>
-<div class="split"><b>Do</b><span>Run the check prompt. Before the follow-up, stop the room.</span></div>
-<div class="split"><b>Say</b><span><span class="say">“It found a lot. What did it miss?”</span> Let them guess, then run <code>Does every model appear under only one brand?</code> <span class="say">“Two Pixel 10 sales were filed under Samsung. It didn't find them because we didn't ask.”</span></span></div>
-<div class="split"><b>Then</b><span>Run the fix prompt. <span class="say">“Setting blank discounts to 0 is our assumption. Write it down; the owner might disagree.”</span></span></div>
+<section class="act"><h2>Demo 2 · Spot the AI mistake <span class="time">10–14</span><span class="who">Slide 7</span></h2>
+<div class="why"><b>Why:</b> before cleaning anything, learners see for themselves that AI can be confidently wrong.</div>
+<div class="split"><b>Do</b><span>Give the room about 60 seconds: <span class="say">“There's one big mistake. What is it, and how would you check it?”</span> Take two or three answers, then click to reveal the answer panel.</span></div>
+<div class="split"><b>Expect</b><span>July's $950,000 is an outlier, almost certainly a typing error (an extra digit). The other 11 months are $46,900–$58,300 and average $52,182. The AI's other numbers are correct (the total really is $1,524,000), so the outlier is the only problem; its $127,000 average is above 11 of 12 months and the advice is built on a typo.</span></div>
+<div class="split"><b>Say</b><span class="say">“Sort the column or chart it, and one value towers over the rest. In Google Sheets, compare =MAX with =MEDIAN. Then confirm the real number with whoever owns the data.”</span></div></section>
+
+<section class="act"><h2>Demo 2 · Five mistakes to watch for <span class="time">14–16</span><span class="who">Slide 8</span></h2>
+<div class="split"><b>Say</b><span class="say">“You've just caught an outlier. Here are all five, and the quick check for each. These go straight into the cleaning request.”</span></div>
+<div class="split"><b>Expect</b><span>Outlier · missing data filled in · duplicate rows · totals that don't add up · wrong averages or percentages.</span></div></section>
+
+<section class="act"><h2>Demo 2 · Clean the data <span class="time">16–19</span><span class="who">Slide 9</span></h2>
+<div class="why"><b>Why:</b> AI only checks for the problems you name.</div>
+<div class="split"><b>Do</b><span>Run the find-problems prompt. Before the follow-up, stop the room.</span></div>
+<div class="split"><b>Say</b><span><span class="say">“It found a lot. What did it miss?”</span> Then run <code>Does every model appear under only one brand?</code> <span class="say">“Two Pixel 10 sales were filed under Samsung. It didn't find them because we didn't ask.”</span></span></div>
+<div class="split"><b>Then</b><span>Run the fix prompt. <span class="say">“Setting blank discounts to 0 is our assumption, not a fact. Write it down.”</span> Define Net Sales: the money received after the discount.</span></div>
 <div class="split"><b>Expect</b><span>126 rows after cleaning. Full change list in the <a href="#keyph">PhoneHub key</a>.</span></div>
-<div class="split"><b>Verify</b><span>Hand-check one changed row: Ctrl+F its Sale_ID, then <code>=G2*H2*(1-I2/100)</code> with that row number.</span></div>
-<div class="split"><b>Watch for</b><span>“No issues found” → <code>Check every row, not a sample.</code> Anyone lost: clean file, new chat, rejoin at Step 3.</span></div></section>
+<div class="split"><b>Check</b><span>Ctrl+F one changed Sale_ID, then <code>=G2*H2*(1-I2/100)</code> with that row's number.</span></div>
+<div class="split"><b>Watch for</b><span>“No issues found” → <code>Check every row, not a sample.</code></span></div></section>
 
-<section class="act"><h2>Step 3 · Ask better questions <span class="time">27–32</span></h2>
-<div class="why"><b>Why:</b> AI widens your thinking with questions you didn't consider, and shows what the data can't tell you.</div>
-<div class="split"><b>Do</b><span>Run the 10-questions prompt; everyone picks the 3 that interest them and runs the follow-up with their own numbers. On the projector, use 3 you choose.</span></div>
-<div class="split"><b>Say</b><span class="say">“Anything about why customers did something is a Hypothesis. No column records why.”</span></div>
-<div class="split"><b>Expect</b><span>Can't answer: reasons for buying, foot traffic, staff costs, returns, customer demographics.</span></div></section>
+<section class="act"><h2>Demo 3 · Answer the question <span class="time">19–24</span><span class="who">Slide 10</span></h2>
+<div class="why"><b>Why:</b> analysis starts with the business question, not the prompt.</div>
+<div class="split"><b>Do</b><span>Live, before revealing the measures table, ask the room: <span class="say">“What will Jordan decide? Which numbers would change that decision? Which columns hold them?”</span> Then reveal the table and run the prompt.</span></div>
+<div class="split"><b>Expect</b><span>Apple top brand $56,293.10. Online discounts 12.5% vs 3.3% in store; online margin 12.4% vs 20.2%. Restock iPhone 17 (3 left, 29 sold); slow down Galaxy Z Flip7 (34 left, 4 sold). Name mismatch: “Galaxy Z Flip 7” in Inventory.</span></div>
+<div class="split"><b>Say</b><span class="say">“Before Jordan sees any of this, we check it two ways: does it make sense, and do the numbers match Google Sheets?”</span></div></section>
 
-<section class="act"><h2>Step 4 · Check the join <span class="time">32–35</span><span class="who">Demo only</span></h2>
-<div class="why"><b>Why:</b> combining two sheets silently drops rows when names don't match exactly.</div>
-<div class="split"><b>Expect</b><span>Join on Model. Mismatch: Inventory <code>Galaxy Z Flip 7</code> vs Sales <code>Galaxy Z Flip7</code>. That's the model with the most unsold stock (34 on hand, 4 sold), so a naive join hides exactly the problem the owner needs to see.</span></div>
-<div class="split"><b>Say</b><span class="say">“A join is a hypothesis. Always ask which values don't match.”</span></div>
-<div class="split"><b>If behind</b><span>Cut this to one sentence; it's a stretch in the hands-on.</span></div></section>
+<section class="act"><h2>Does the answer make sense? <span class="time">24–26</span><span class="who">Slide 11</span></h2>
+<div class="split"><b>Do</b><span>Run the five questions out loud on Demo 3's answer. Parts add to $116,750.98; 126 rows used; every % between 0 and 100; deeper discount with thinner margin points the same way; Apple at 48% is plausible.</span></div>
+<div class="split"><b>Ask the room</b><span class="say">“Which question would have caught July's $950,000 on slide 7?”</span> (Does one item take an odd share?)</div>
+<div class="split"><b>Say</b><span class="say">“If something fails, ask the AI to show its working for that number before you change anything.”</span></div></section>
 
-<section class="act"><h2>Step 5 · DATA: bad → good → best <span class="time">35–42</span></h2>
-<div class="why"><b>Why:</b> a clear prompt turns a generic summary into an answer you can act on and check.</div>
-<div class="split"><b>Do</b><span>On the projector, run <code>Analyze this data.</code> (point out: it picked its own questions, and which rows did it use?). Then the Good prompt (point out: “sold the most” in units or dollars?). Then the room runs Best from the participant page.</span></div>
-<div class="split"><b>Say</b><span class="say">“Same data, three answers. The only thing that changed is what we gave the AI. Which one could you defend to your boss? D-A-T-A: Describe the data, Aim at a decision, define the Task, Audit the answer. A vague ask gets a vague answer, like briefing an intern.”</span></div>
-<div class="split"><b>Expect</b><span>Apple top brand $56,293.10; Online 42 units, 12.5% average discount, 12.4% margin vs 20.2% in store; restock iPhone 17 and Pixel 10a; too much stock in Galaxy Z Flip7, Razr 2026, OnePlus 15.</span></div>
-<div class="split"><b>Verify</b><span>Everyone opens <code>phonehub_clean.xlsx</code> in Sheets: <code>=SUMIF(E:E,"Apple",K:K)</code> → 56293.1; <code>=SUMIF(D:D,"Online",H:H)</code> → 42.</span></div>
-<div class="split"><b>Watch for</b><span>Totals off by $799 → the July sale wasn't excluded. Off by one sale → duplicate kept. Ask: <code>Did you remove the duplicate and the July sale?</code></span></div></section>
+<section class="act"><h2>Check the numbers in Google Sheets <span class="time">26–28</span><span class="who">Slide 12</span></h2>
+<div class="split"><b>Do</b><span>On <code>phonehub_clean.xlsx</code>, run two or three in empty cells: <code>=COUNTA(A:A)-1</code> → 126 · <code>=SUMIF(E:E,"Apple",K:K)</code> → 56293.1 · <code>=SUMIF(D:D,"Online",H:H)</code> → 42 · <code>=AVERAGEIF(D:D,"Online",I:I)</code> → 12.53.</span></div>
+<div class="split"><b>Say</b><span class="say">“Check the numbers the decision rests on, the ones going in the report, and write each one down. Demo 6 uses only these.”</span></div>
+<div class="split"><b>Watch for</b><span>An average that differs: ask the AI whether it averaged per row or per unit sold. Both can be right; the report must say which.</span></div></section>
 
-<section class="act"><h2>Step 6 · Read the reviews <span class="time">42–50</span></h2>
-<div class="why"><b>Why:</b> AI reads hundreds of comments in seconds, but you measure how far to trust it.</div>
-<div class="split"><b>Do</b><span>Two minutes of silent hand-labeling on the participant page (R-01 to R-05), then run the prompt.</span></div>
-<div class="split"><b>Say</b><span class="say">“Where you and Claude disagree, who's right? There isn't always one answer; the point is to know how far to trust it.”</span></div>
-<div class="split"><b>Expect</b><span>R-02 sarcastic, R-03 Spanish, R-05 mixed. Claude usually gets all three. Counts total 40. Top complaints: Online shipping, Price &amp; trade-in, Activation &amp; setup.</span></div>
-<div class="split"><b>Watch for</b><span>Counts not totaling 40 → <code>Your counts total __, not 40. Show any reviews you skipped.</code> Quotes that don't Ctrl+F word for word → made-up quote, a great teaching moment.</span></div></section>
+<section class="act"><h2>Demo 4 · Chart it <span class="time">28–31</span><span class="who">Slide 13</span></h2>
+<div class="why"><b>Why:</b> a chart shows the pattern at a glance, and a bad number jumps out.</div>
+<div class="split"><b>Do</b><span>Pick the chart first (bar high to low for comparing items; line for over time; side-by-side bars for two groups), then run the prompt.</span></div>
+<div class="split"><b>Say</b><span class="say">“A title that states the finding, like ‘Apple brings in nearly half of sales’, tells the reader what to look at. Bars that start at zero stop small differences from looking huge.”</span></div>
+<div class="split"><b>Expect</b><span>Apple's bar $56,293.10, about 48% of $116,750.98. Online discount bar (12.5%) almost four times in-store (3.3%).</span></div>
+<div class="split"><b>If it stalls</b><span>Show your screenshot, or select a small table of totals in Google Sheets and use Insert → Chart.</span></div></section>
 
-<section class="act"><h2>Dashboard + pushback <span class="time">50–55</span><span class="who">You</span></h2>
-<div class="why"><b>Why:</b> turn verified numbers into something the owner can explore, and prepare for their questions.</div>
-<div class="split"><b>Do</b><span>Run the dashboard prompt. While it generates (1–2 min): <span class="say">“Same data, same formulas. A dashboard can still be wrong.”</span> Set Brand = Apple; the room calls out whether the Net Sales card says $56,293.10. Then run the pushback prompt.</span></div>
-<div class="split"><b>If it stalls</b><span>Open the backup dashboard. Don't wait more than 90 seconds.</span></div></section>
+<section class="act"><h2>Demo 5 · Read the comments <span class="time">31–34</span><span class="who">Slide 14</span></h2>
+<div class="why"><b>Why:</b> the numbers show what happened; reviews hint at why.</div>
+<div class="split"><b>Do</b><span>Label R-01 to R-05 with the room first (R-02 sarcastic, R-03 Spanish, R-05 mixed), then run the prompt.</span></div>
+<div class="split"><b>Expect</b><span>Counts total 40. Top complaints: online shipping, price and trade-in, activation and setup.</span></div>
+<div class="split"><b>Watch for</b><span>Counts not totaling 40 → <code>Your counts total __, not 40. Show any reviews you skipped.</code> A quote that doesn't Ctrl+F word for word is made up: a great teaching moment.</span></div></section>
 
-<div class="part" id="c"><h2>Part C · Hands-on on Copper Kettle <span class="time">55–85 min</span></h2><p>Everyone works on their own. You circulate.</p></div>
+<section class="act"><h2>Demo 6 · Report <span class="time">34–36</span><span class="who">Slide 15</span></h2>
+<div class="why"><b>Why:</b> the owner wants what the numbers mean and what to do.</div>
+<div class="split"><b>Say</b><span class="say">“This is the one step where AI writes for a person, so the parts change: Context, Role, Action, Format, Tone. The report can only be as good as the checked numbers you put in its Context.”</span></div>
+<div class="split"><b>Do</b><span>Run the prompt in the same PhoneHub chat. Delete any number you didn't check; add “Prepared with AI assistance; numbers checked by [your name].”</span></div>
+<div class="split"><b>Check</b><span>Point at each number. Can you show where you checked it?</span></div></section>
 
-<section class="act"><h2>Release the room <span class="time">55</span></h2>
-<div class="why"><b>Why:</b> same recipe, new data. Proof they learned the method, not the answers.</div>
-<div class="split"><b>Say</b><span class="say">“Same steps, new business, on your own. Run each prompt in Claude, then do its check in Google Sheets. At H4 you'll rebuild a bad prompt with DATA yourself. Stuck for more than two minutes? Raise your hand, or use the clean file and move on.”</span></div>
-<div class="split"><b>Do</b><span>Put the H1–H6 list on the projector with times. Set a visible 30-minute timer.</span></div></section>
+<div class="part" id="c"><h2>Part C · Do on Corner Café <span class="time">36–83 min</span></h2><p>Slides 16–22. Everyone works on their own; you circulate.</p></div>
+
+<section class="act"><h2>Release the room <span class="time">36–38</span><span class="who">Slide 16</span></h2>
+<div class="split"><b>Say</b><span class="say">“Same six steps, new business, on your own. One Claude chat for all six. Each hands-on slide starts with a reminder of its demo. Stuck for more than two minutes? Raise your hand, or download the clean file, start a new chat and skip to H3.”</span></div>
+<div class="split"><b>Do</b><span>Put the H1–H6 times on screen: H1 6 · H2 9 · H3 11 · H4 7 · H5 6 · H6 6.</span></div></section>
 
 <section class="act"><h2>While you circulate</h2>
 <div class="tbl"><table><thead><tr><th>Step</th><th>Look for</th><th>Nudge</th></tr></thead><tbody>
 <tr><td>H1</td><td>Personal data left in C-01 (staff name “Hiro”) and C-23 (phone number)</td><td>“Read the review text, not just the columns.”</td></tr>
-<tr><td>H3</td><td>The price typo: CK-2073, Ethiopia beans at $2,100</td><td>“Anything look too big?” If they skip it, Whole Bean Coffee shows $4,809 instead of $2,859 in H4.</td></tr>
-<tr><td>H4</td><td>DATA prompts missing the Aim or the Audit line</td><td>“What decision is Maya making? How would you check this?”</td></tr>
-<tr><td>H4</td><td>Attention list missing Colombia Huila</td><td>The Inventory name has a space (“12 oz”). That's their top seller with 5 left. Point them to the join stretch.</td></tr>
-<tr><td>H5</td><td>Counts not totaling 30</td><td>Same fix as Step 6.</td></tr>
-<tr><td>H6</td><td>Unverified numbers in the summary</td><td>“Show me where you checked that one.”</td></tr>
+<tr><td>H2</td><td>The price outlier: CC-2073, Ethiopia beans at $2,100</td><td>“Did your request ask for unusual values?” Left in, Whole Bean Coffee shows $4,729.65 instead of $2,858.55 in H3 and H4.</td></tr>
+<tr><td>H3</td><td>Prompts written before the measures table</td><td>“What will Maya decide? Which numbers would change it?”</td></tr>
+<tr><td>H3</td><td>Restock list missing Colombia Huila</td><td>The Inventory name has a space (“12 oz”). That's the top seller with 5 left.</td></tr>
+<tr><td>H4</td><td>A Whole Bean Coffee bar near $4,730, or bars not starting at zero</td><td>“Does that bar match the number you checked in H3?”</td></tr>
+<tr><td>H5</td><td>Counts not totaling 30</td><td>Same fix as Demo 5.</td></tr>
+<tr><td>H6</td><td>Unchecked numbers in the summary</td><td>“Show me where you checked that one.”</td></tr>
 </tbody></table></div>
-<p><b>At 0:70</b> everyone should be past H3. Anyone behind: give them the clean file and send them straight to H4. Visit slower participants first at H1 and H3.</p></section>
+<p><b>At 0:64</b> everyone should be past H3. Anyone behind: give them the clean file and send them to H4. Visit slower participants first at H1 and H3.</p></section>
 
-<section class="act" id="wrap"><h2>Wrap-up <span class="time">85–90</span></h2>
-<div class="why"><b>Why:</b> saying a finding aloud locks it in, and the exit ticket turns it into next week's action.</div>
-<div class="split"><b>Ask</b><span><span class="say">“What's one finding you didn't expect, and how did you check it?”</span> Take 2–3 volunteers.</span></div>
-<div class="split"><b>Fish for</b><span>The price typo, the Colombia name mismatch, a review where stars and words disagree (C-18, C-21).</span></div>
-<div class="split"><b>Close</b><span><span class="say">“Rehearse on fake data. Run on real data only in an approved tool. And verify again.”</span> Exit ticket on the page; mention the take-home.</span></div></section>
+<section class="act" id="wrap"><h2>Wrap-up <span class="time">83–90</span><span class="who">Slides 23–25</span></h2>
+<div class="split"><b>Responsible</b><span>Privacy (today's data is made up; real work data only in approved tools, after removing personal details, including in comment text) · Accuracy (point back to the outlier, the duplicate and the name mismatch) · Bias (a survey of online shoppers describes them, not all customers) · You own it (their name is on the summary).</span></div>
+<div class="split"><b>Share-out</b><span>2–3 volunteers each say one finding about Corner Café and how they checked it. Fish for the price outlier (CC-2073), the Colombia Huila name mismatch, or a review where stars and words disagree (C-18, C-21).</span></div>
+<div class="split"><b>Close</b><span><span class="say">“Practice on made-up data, use real data only in approved tools, and check every number.”</span> Exit ticket and take-home are on the participant page.</span></div></section>
 
 <section class="act" id="fix"><h2>Troubleshooting and cuts</h2>
 <div class="tbl"><table><thead><tr><th>Problem</th><th>Fix</th></tr></thead><tbody>
 <tr><td>Claude can't see the file</td><td>Re-attach; wait for the file chip before sending</td></tr>
 <tr><td>Only one sheet read</td><td><code>Please read all three sheets.</code> Check they downloaded .xlsx, not .csv</td></tr>
 <tr><td>“No issues found”</td><td><code>Check every row, not a sample.</code></td></tr>
-<tr><td>Numbers differ from the key</td><td><code>Did you remove the duplicate and the July sale?</code></td></tr>
-<tr><td>Google Sheets import added a new tab instead of replacing</td><td>Fine for checks; for upload, use the original file, or redo import with “Replace spreadsheet”</td></tr>
-<tr><td>SUMIF returns 0</td><td>Wrong tab (must be Sales) or the brand has a trailing space: use the clean file</td></tr>
-<tr><td>Dashboard shows code</td><td>Click the preview on the artifact card</td></tr>
-<tr><td>Filters don't change KPIs</td><td><code>Fix it so every card and chart uses the filtered data.</code></td></tr>
-<tr><td>Usage limit reached</td><td>The clean file in a fresh chat; if that is blocked too, they follow on the projector and still do the Google Sheets checks</td></tr>
+<tr><td>Numbers differ from the key</td><td><code>Did you remove the duplicate and the out-of-period sale? Did you fix the price outlier?</code></td></tr>
+<tr><td>Average differs from Google Sheets</td><td><code>Did you average per row or per unit sold?</code></td></tr>
+<tr><td>Google Sheets import added a new tab instead of replacing</td><td>Fine for checks; for upload, redo import with “Replace spreadsheet”</td></tr>
+<tr><td>SUMIF returns 0</td><td>Wrong tab (must be Sales) or a trailing space in the name: use the clean file</td></tr>
+<tr><td>No chart from Claude</td><td>Select the totals in Google Sheets → Insert → Chart</td></tr>
+<tr><td>Usage limit reached</td><td>The clean file in a fresh chat; if that's blocked too, they follow on the projector and still do the Google Sheets checks</td></tr>
 </tbody></table></div>
 <p class="label">Running behind? Cut in this order</p>
-<ol class="steps"><li>Step 4 (join): one sentence, keep it as a stretch</li><li>Step 3: run only “what can't this data answer?”</li><li>Dashboard: open the backup instead of generating</li><li>Never cut Step 2's “what did it miss?” or the H6 summary</li></ol></section>
+<ol class="steps"><li>Demo 4: show your screenshot instead of generating the charts</li><li>Demo 5: label two reviews with the room instead of five</li><li>Slide 8: point to the table on the participant page and move on</li><li>Never cut slide 7, slides 11–12 or H6</li></ol></section>
 
 <h2 style="color:var(--terra)">Answer keys</h2>
-<p class="sub">Computed in code from the files and re-checked by cleaning the raw files a second, independent way; both agree to the cent. <b>Cleaning rules:</b> standardize names; move misfiled items; remove the exact duplicate; blank discounts = 0; exclude dates outside Jan–Jun 2026; fix the price typo; recalculate Net_Sales = Price_USD × Quantity × (1 − Discount_Pct/100). Average discount = simple average per sale. Gross margin = Gross Profit ÷ Net Sales.</p>
+<p class="sub">Computed in code from the files. <b>Cleaning rules:</b> standardize names; move misfiled items; remove the exact duplicate; blank discounts = 0; exclude dates outside Jan–Jun 2026; fix the price outlier; recalculate Net_Sales = Price_USD × Quantity × (1 − Discount_Pct/100). Average discount = simple average per sale. Profit margin = (Net Sales − Unit_Cost_USD × Quantity) ÷ Net Sales.</p>
 
 <section class="act" id="keyph"><h2>PhoneHub</h2>
 <p><b>Rows:</b> Sales 128 → 126 after cleaning · Inventory 13 · Reviews 40. <b>Totals:</b> Net Sales $116,750.98 · Units 156 · Gross Profit $21,470.98 · raw file as-is $118,973.68.</p>
+<details open><summary>Slide 7 outlier table</summary><p>Months as shown on the slide: Jan 48,200 · Feb 46,900 · Mar 51,300 · Apr 52,800 · May 54,100 · Jun 55,600 · Jul 950,000 · Aug 53,900 · Sep 50,700 · Oct 49,800 · Nov 52,400 · Dec 58,300. Total $1,524,000; average $127,000. Without July: 11 months, $46,900–$58,300, average $52,182.</p></details>
 <details open><summary>Planted problems</summary><div class="tbl"><table><thead><tr><th>Problem</th><th>Rows</th><th>Fix</th></tr></thead><tbody>
 <tr><td>Brand spellings</td><td>S-1086, S-1114, S-1117 (apple, APPLE); S-1084, S-1107 (“Samsung ” trailing space); S-1030 (Samsng); S-1021, S-1024 (Moto)</td><td>Standardize</td></tr>
 <tr><td>Wrong brand</td><td>S-1091, S-1098: Pixel 10 under Samsung</td><td>Google</td></tr>
@@ -267,7 +246,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <tr><td>Blank discounts</td><td>S-1040, S-1046, S-1089, S-1110, S-1123</td><td>0 (assumption)</td></tr>
 <tr><td>Wrong Net_Sales</td><td>S-1034 $494.10→$404.10 · S-1045 $803.30→$848.30 · S-1049 $2,198.00→$1,868.30 · S-1065 $599.00→$539.10</td><td>Recalculate</td></tr>
 <tr><td>Outside period</td><td>S-1127, Jul 2, 2026, $799</td><td>Exclude</td></tr>
-<tr><td>Join mismatch</td><td>“Galaxy Z Flip 7” (Inventory) vs “Galaxy Z Flip7”</td><td>Match names</td></tr>
+<tr><td>Name mismatch</td><td>“Galaxy Z Flip 7” (Inventory) vs “Galaxy Z Flip7”</td><td>Match names</td></tr>
 <tr><td>Personal data in text</td><td>R-01 staff name, R-22 email</td><td>Redact</td></tr>
 </tbody></table></div></details>
 <details open><summary>Analysis</summary><div class="tbl"><table><thead><tr><th>Brand</th><th class="num">Net Sales</th><th class="num">Units</th><th class="num">Gross Profit</th></tr></thead><tbody>
@@ -277,65 +256,103 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <tr><td>Motorola</td><td class="num">$5,115.42</td><td class="num">11</td><td class="num">$1,255.42</td></tr>
 <tr><td>OnePlus</td><td class="num">$5,061.37</td><td class="num">6</td><td class="num">$981.37</td></tr>
 </tbody></table></div>
-<div class="tbl"><table><thead><tr><th>Channel</th><th class="num">Units</th><th class="num">Net Sales</th><th class="num">Avg discount</th><th class="num">Gross margin</th></tr></thead><tbody>
+<div class="tbl"><table><thead><tr><th>Channel</th><th class="num">Units</th><th class="num">Net Sales</th><th class="num">Avg discount</th><th class="num">Profit margin</th></tr></thead><tbody>
 <tr><td>In-store</td><td class="num">114</td><td class="num">$89,377.30</td><td class="num">3.3%</td><td class="num">20.2%</td></tr>
 <tr><td>Online</td><td class="num">42</td><td class="num">$27,373.68</td><td class="num">12.5%</td><td class="num">12.4%</td></tr>
 </tbody></table></div>
-<ul class="plain"><li><b>Top 5 by units:</b> iPhone 17 (29), iPhone 17 Pro (23), Pixel 10a (21), iPhone 16e (19), Galaxy S26 (13)</li>
-<li><b>Top 5 by gross profit:</b> iPhone 17 $3,672.90 · iPhone 17 Pro $3,498.40 · Galaxy S26 $2,267.50 · iPhone 16e $2,161.80 · Pixel 10a $1,860.70</li>
+<ul class="plain"><li><b>Sheets checks (slide 12):</b> <code>=COUNTA(A:A)-1</code> → 126 · <code>=SUMIF(E:E,"Apple",K:K)</code> → 56293.1 · <code>=SUMIF(D:D,"Online",H:H)</code> → 42 · <code>=AVERAGEIF(D:D,"Online",I:I)</code> → 12.53 · <code>=MAX(K:K)</code> 3,132.15 vs <code>=MEDIAN(K:K)</code> 799</li>
+<li><b>Top 5 by units:</b> iPhone 17 (29), iPhone 17 Pro (23), Pixel 10a (21), iPhone 16e (19), Galaxy S26 (13)</li>
 <li><b>Restock (low stock, high sales):</b> iPhone 17 (3 on hand, 29 sold), Pixel 10a (4, 21)</li>
 <li><b>Too much stock:</b> Galaxy Z Flip7 (34, 4), Razr 2026 (22, 5), OnePlus 15 (19, 6)</li>
-<li><b>Atlanta vs Denver stretch:</b> Google differs most, 12.5% vs 19.4% of Net Sales</li></ul></details>
+<li><b>Atlanta vs Denver:</b> Google differs most, 12.5% vs 19.4% of Net Sales</li></ul></details>
 <details open><summary>Reviews</summary>
 <p>18 Positive · 19 Negative · 3 Mixed. Top complaint themes (Negative + Mixed): Online shipping 6, Price &amp; trade-in 5, Activation &amp; setup 4.</p>
 <div class="tbl"><table><thead><tr><th>Category</th><th class="num">Count</th><th class="num">% negative</th></tr></thead><tbody>
 <tr><td>Online shipping</td><td class="num">8</td><td class="num">62%</td></tr><tr><td>Price &amp; trade-in</td><td class="num">7</td><td class="num">43%</td></tr><tr><td>Product quality</td><td class="num">7</td><td class="num">29%</td></tr><tr><td>Activation &amp; setup</td><td class="num">6</td><td class="num">67%</td></tr><tr><td>Staff knowledge</td><td class="num">4</td><td class="num">25%</td></tr><tr><td>Store experience</td><td class="num">4</td><td class="num">50%</td></tr><tr><td>Financing &amp; payment</td><td class="num">3</td><td class="num">33%</td></tr><tr><td>Other</td><td class="num">1</td><td class="num">100%</td></tr>
 </tbody></table></div>
-<p><b>Stars vs sentiment:</b> R-27 (5 stars, Mixed), R-31 (1 star, Positive; likely misclick). Accept a reasonable second category on borderline reviews.</p></details></section>
+<p><b>R-01 to R-05:</b> Staff knowledge, Positive · Online shipping, Negative (sarcastic) · Activation &amp; setup, Negative (Spanish) · Online shipping, Positive · Price &amp; trade-in, Mixed. <b>Stars vs sentiment:</b> R-27 (5 stars, Mixed), R-31 (1 star, Positive; likely misclick).</p></details></section>
 
-<section class="act" id="keyck"><h2>Copper Kettle</h2>
+<section class="act" id="keycc"><h2>Corner Café</h2>
 <p><b>Rows:</b> Sales 140 → 138 · Inventory 11 · Reviews 30. <b>Totals:</b> Net Sales $5,891.30 · Units 191 · Gross Profit $3,177.10 · raw file as-is $7,884.10.</p>
-<details open><summary>Planted problems</summary><div class="tbl"><table><thead><tr><th>Problem</th><th>Rows</th><th>Fix</th></tr></thead><tbody>
-<tr><td>Category spellings</td><td>CK-2045, CK-2126 (Whole Bean); CK-2119 (whole bean coffee); CK-2004 (Coffee Beans); CK-2021, CK-2089 (Equipment)</td><td>Standardize</td></tr>
-<tr><td>Wrong category</td><td>CK-2050, CK-2069: Gooseneck Kettle under Merchandise</td><td>Brewing Equipment</td></tr>
-<tr><td>Duplicate</td><td>CK-2063 twice</td><td>Remove one</td></tr>
-<tr><td>Blank discounts</td><td>CK-2061, CK-2115, CK-2118, CK-2127</td><td>0</td></tr>
-<tr><td>Wrong Net_Sales</td><td>CK-2010 $76.00→$60.80 · CK-2042 $16.00→$27.20 · CK-2116 $48.00→$40.80</td><td>Recalculate</td></tr>
-<tr><td><b>Price typo (new)</b></td><td>CK-2073: Ethiopia 12oz at $2,100.00, Net_Sales $1,890.00. Its Net_Sales matches its price, so only an outlier check catches it.</td><td>$21.00 → Net_Sales $18.90</td></tr>
-<tr><td>Outside period</td><td>CK-2139, Dec 30, 2025</td><td>Exclude</td></tr>
-<tr><td>Join mismatch</td><td>“Colombia Huila 12 oz” (Inventory) vs “Colombia Huila 12oz”</td><td>Match names</td></tr>
-<tr><td>Personal data in text</td><td>C-01 staff name, C-23 phone number</td><td>Redact</td></tr>
-</tbody></table></div></details>
-<details open><summary>Analysis</summary><div class="tbl"><table><thead><tr><th>Category</th><th class="num">Net Sales</th><th class="num">Units</th><th class="num">Gross Profit</th></tr></thead><tbody>
+<details open><summary>H1 · Understand the data</summary><p>One Sales row = one order line: one product, at one location, on one date. Row counts: Sales 140, Inventory 11, Reviews 30. Personal details in review text: a staff name in C-01 and a phone number in C-23.</p>
+<p class="label">Model prompt for anyone stuck</p><div class="prompt" data-copy><span class="pt">Role</span>You are a careful data analyst.
+<span class="pt">Task</span>Explain what's in this file and suggest 5 questions this data can answer.
+<span class="pt">Context</span>This is sales data for Corner Café, a coffee shop with two cafés and an online store, for January to June 2026. The owner wants to know what to promote for the holidays and whether online discounts are too deep.
+<span class="pt">Constraints</span>For each sheet, list the columns with an example value, what one row means, the date range and the number of rows. For each question, name the columns it needs. Then list what this data can't tell us.</div></details>
+<details open><summary>H2 · Clean the data</summary><div class="tbl"><table><thead><tr><th>Problem</th><th>Rows</th><th>Fix</th></tr></thead><tbody>
+<tr><td><b>Outlier</b></td><td>CC-2073: Ethiopia 12oz at $2,100.00, Net_Sales $1,890.00. Its Net_Sales matches its wrong price, so the Net_Sales check won't catch it; only a request for unusual values will.</td><td>$21.00 → Net_Sales $18.90</td></tr>
+<tr><td>Category spellings</td><td>CC-2045, CC-2126 (Whole Bean); CC-2119 (whole bean coffee); CC-2004 (Coffee Beans); CC-2021, CC-2089 (Equipment)</td><td>Standardize</td></tr>
+<tr><td>Wrong category</td><td>CC-2050, CC-2069: Gooseneck Kettle under Merchandise</td><td>Brewing Equipment</td></tr>
+<tr><td>Duplicate</td><td>CC-2063 twice</td><td>Remove one</td></tr>
+<tr><td>Blank discounts</td><td>CC-2061, CC-2115, CC-2118, CC-2127</td><td>0 (assumption)</td></tr>
+<tr><td>Wrong Net_Sales</td><td>CC-2010 $76.00→$60.80 · CC-2042 $16.00→$27.20 · CC-2116 $48.00→$40.80</td><td>Recalculate</td></tr>
+<tr><td>Outside period</td><td>CC-2139, Dec 30, 2025</td><td>Exclude</td></tr>
+<tr><td>Name mismatch</td><td>“Colombia Huila 12 oz” (Inventory) vs “Colombia Huila 12oz”</td><td>Match names</td></tr>
+</tbody></table></div>
+<p>After cleaning, Sales has 138 rows. Left in, the outlier makes Whole Bean Coffee $4,729.65 instead of $2,858.55.</p>
+<p class="label">Model prompt</p><div class="prompt" data-copy><span class="pt">Role</span>You are a careful data analyst.
+<span class="pt">Task</span>Find problems in the Sales sheet. Don't change anything yet.
+<span class="pt">Context</span>One row is one order line, January to June 2026.
+<span class="pt">Constraints</span>Check every row, not a sample. Look for blanks, duplicate Order_IDs, category names spelled different ways, dates outside January–June, unusual values, and rows where Net_Sales doesn't equal Price × Quantity × (1 − Discount/100). Show a table: problem, rows, suggested fix.</div></details>
+<details open><summary>H3 · Answer the question</summary>
+<div class="tbl"><table><thead><tr><th>Maya asks</th><th>So I'll measure</th><th>The answer</th></tr></thead><tbody>
+<tr><td>What should we promote for the holidays?</td><td>Best sellers by units and Net Sales, compared with stock on hand</td><td>Colombia Huila is the top seller (37 sold) with only 5 in stock, so restock before promoting. Canvas Totes (30 in stock, 3 sold) and Burr Grinders (26, 6) are overstocked: good candidates to promote or bundle</td></tr>
+<tr><td>Are our online discounts too deep?</td><td>In-store vs online average discount and profit margin</td><td>Online averages a 15.0% discount and a 49.7% margin; in store, 3.0% and 56.6%</td></tr>
+</tbody></table></div>
+<div class="tbl"><table><thead><tr><th>Category</th><th class="num">Net Sales</th><th class="num">Units</th><th class="num">Gross Profit</th></tr></thead><tbody>
 <tr><td>Whole Bean Coffee</td><td class="num">$2,858.55</td><td class="num">119</td><td class="num">$1,760.35</td></tr>
 <tr><td>Brewing Equipment</td><td class="num">$1,887.65</td><td class="num">25</td><td class="num">$796.65</td></tr>
 <tr><td>Subscriptions</td><td class="num">$645.30</td><td class="num">14</td><td class="num">$309.30</td></tr>
 <tr><td>Merchandise</td><td class="num">$499.80</td><td class="num">33</td><td class="num">$310.80</td></tr>
+<tr><td><b>Total</b></td><td class="num"><b>$5,891.30</b></td><td class="num"><b>191</b></td><td class="num"><b>$3,177.10</b></td></tr>
 </tbody></table></div>
-<div class="tbl"><table><thead><tr><th>Channel</th><th class="num">Units</th><th class="num">Net Sales</th><th class="num">Avg discount</th><th class="num">Gross margin</th></tr></thead><tbody>
+<div class="tbl"><table><thead><tr><th>Channel</th><th class="num">Units</th><th class="num">Net Sales</th><th class="num">Avg discount</th><th class="num">Profit margin</th></tr></thead><tbody>
 <tr><td>In-store</td><td class="num">114</td><td class="num">$3,604.40</td><td class="num">3.0%</td><td class="num">56.6%</td></tr>
 <tr><td>Online</td><td class="num">77</td><td class="num">$2,286.90</td><td class="num">15.0%</td><td class="num">49.7%</td></tr>
 </tbody></table></div>
-<ul class="plain"><li><b>Sheets checks:</b> <code>=SUMIF(E:E,"Whole Bean Coffee",K:K)</code> → 2858.55 · <code>=SUMIF(D:D,"Online",H:H)</code> → 77</li>
+<ul class="plain"><li><b>Sense check:</b> the four categories add to $5,891.30 and use all 138 cleaned rows. Online's deeper discount and lower margin point the same way. Whole Bean Coffee at 48.5% of sales is plausible for a coffee shop; about 61% means the outlier is back.</li>
+<li><b>Sheets checks on <code>corner_cafe_clean.xlsx</code>:</b> <code>=SUMIF(E:E,"Whole Bean Coffee",K:K)</code> → 2858.55 · <code>=SUMIF(D:D,"Online",H:H)</code> → 77 · <code>=AVERAGEIF(D:D,"Online",I:I)</code> → 15</li>
+<li><b>Name mismatch:</b> Inventory “Colombia Huila 12 oz” vs Sales “Colombia Huila 12oz”. That's the top seller, so a missed match hides the most important restock.</li>
 <li><b>Top 5 by units:</b> Colombia Huila 12oz (37), House Blend 2lb (31), Ceramic Mug (30), Ethiopia Yirgacheffe 12oz (26), Guatemala Antigua 12oz (17)</li>
-<li><b>Restock:</b> Colombia Huila (5 on hand, 37 sold), Ethiopia Yirgacheffe (7, 26)</li>
-<li><b>Too much stock:</b> Canvas Tote (30, 3), Burr Grinder (26, 6)</li>
-<li><b>Austin vs Nashville stretch:</b> Whole Bean Coffee differs most, 65.4% vs 50.6% of Net Sales; Nashville sells more equipment (40.9% vs 30.0%)</li></ul></details>
-<details open><summary>Reviews</summary>
-<p>13 Positive · 14 Negative · 3 Mixed. Top complaints: Subscription management 5, Online ordering &amp; shipping 5, Equipment quality 3. 11 of the 17 non-positive reviews are online.</p>
+<li><b>Austin vs Nashville:</b> Whole Bean Coffee differs most, 65.4% vs 50.6% of Net Sales; Nashville sells more equipment (40.9% vs 30.0%)</li></ul>
+<p class="label">Model prompt</p><div class="prompt" data-copy><span class="pt">Role</span>You are an analyst helping the owner make a decision.
+<span class="pt">Task</span>Show Net Sales and units by category, the top 5 products by units, stock vs sales for each product, and in-store vs online average discount and profit margin.
+<span class="pt">Context</span>Use the cleaned data. The owner wants to know what to promote for the holidays and whether online discounts are too deep.
+<span class="pt">Constraints</span>Use Net Sales = Price × Quantity × (1 − Discount/100) and profit = Net Sales − Unit cost × Quantity. Match product names between Sales and Inventory and list any that don't match. Tell me how many rows you used, and mark anything that's a guess.</div></details>
+<details open><summary>H4 · Chart it</summary>
+<div class="tbl"><table><thead><tr><th>Maya asks</th><th>Best chart</th><th>What it shows</th><th>A good title</th></tr></thead><tbody>
+<tr><td>What should we promote for the holidays?</td><td>Bar chart of Net Sales by category, high to low</td><td>Whole Bean Coffee $2,858.55 · Brewing Equipment $1,887.65 · Subscriptions $645.30 · Merchandise $499.80</td><td>“Whole bean coffee brings in nearly half of sales” (48.5%)</td></tr>
+<tr><td>Are our online discounts too deep?</td><td>Side-by-side bars, in-store vs online</td><td>Average discount 3.0% vs 15.0%; profit margin 56.6% vs 49.7%</td><td>“Online orders get five times the discount”</td></tr>
+</tbody></table></div>
+<p>Watch for a Whole Bean Coffee bar near $4,730 (outlier not fixed) and bars that don't start at zero. Stretch: units sold vs stock left by product shows Colombia Huila (37 sold, 5 left) needs restocking before any promotion.</p>
+<p class="label">Model prompt</p><div class="prompt" data-copy><span class="pt">Role</span>You are a data analyst who makes simple, clear charts for a business owner.
+<span class="pt">Task</span>Make two charts: Net Sales by category, highest to lowest; and in-store vs online average discount and profit margin, side by side.
+<span class="pt">Context</span>Use the cleaned data and the numbers we checked. The owner wants to see what to promote for the holidays and whether online discounts are too deep.
+<span class="pt">Constraints</span>Title each chart with what it shows, in plain words. Label the axes with units ($ or %). Start the bars at zero. List the numbers under each chart.</div></details>
+<details open><summary>H5 · Read the comments</summary>
+<p>13 Positive · 14 Negative · 3 Mixed. Top complaints: subscription management (5), online ordering and shipping (5), equipment quality (3). 11 of the 17 non-positive reviews are online.</p>
 <div class="tbl"><table><thead><tr><th>Category</th><th class="num">Count</th><th class="num">% negative</th></tr></thead><tbody>
 <tr><td>Online ordering &amp; shipping</td><td class="num">6</td><td class="num">67%</td></tr><tr><td>Subscription management</td><td class="num">6</td><td class="num">83%</td></tr><tr><td>Equipment quality</td><td class="num">4</td><td class="num">75%</td></tr><tr><td>Coffee taste &amp; freshness</td><td class="num">4</td><td class="num">25%</td></tr><tr><td>Café atmosphere</td><td class="num">3</td><td class="num">33%</td></tr><tr><td>Price &amp; value</td><td class="num">3</td><td class="num">0% (2 Mixed)</td></tr><tr><td>Staff &amp; service</td><td class="num">3</td><td class="num">0%</td></tr><tr><td>Other</td><td class="num">1</td><td class="num">0%</td></tr>
 </tbody></table></div>
-<p><b>C-01 to C-05:</b> Staff &amp; service, Positive · Subscription management, Negative (sarcastic) · Coffee taste &amp; freshness, Positive · Online ordering &amp; shipping, Negative (Spanish) · Price &amp; value, Mixed. <b>Stars vs sentiment:</b> C-18 (1 star, Positive), C-21 (5 stars, Mixed).</p></details></section>
+<div class="tbl"><table><thead><tr><th>Review</th><th>Category</th><th>Sentiment</th><th>Why it's tricky</th></tr></thead><tbody>
+<tr><td>C-01</td><td>Staff &amp; service</td><td>Positive</td><td>Contains a staff name to remove</td></tr>
+<tr><td>C-02</td><td>Subscription management</td><td>Negative</td><td>Sarcastic: sounds positive, isn't</td></tr>
+<tr><td>C-03</td><td>Coffee taste &amp; freshness</td><td>Positive</td><td>—</td></tr>
+<tr><td>C-04</td><td>Online ordering &amp; shipping</td><td>Negative</td><td>Written in Spanish</td></tr>
+<tr><td>C-05</td><td>Price &amp; value</td><td>Mixed</td><td>Praise and a complaint in one</td></tr>
+</tbody></table></div>
+<p><b>Stars vs sentiment:</b> C-18 (1 star, Positive), C-21 (5 stars, Mixed).</p></details>
+<details open><summary>H6 · Report</summary><p>A strong summary uses only checked numbers. For example: online discounts are five times deeper than in store (15.0% vs 3.0%), with a lower margin (49.7% vs 56.6%); the top seller, Colombia Huila, is nearly out of stock (5 left, 37 sold); and most complaints are about subscriptions and online orders. Each recommendation comes with a 2-week test, and the summary ends with the AI-assistance line and the learner's name.</p></details></section>
 
-<footer>Southwest AI · AI Made Practical | AI for Data · Trainer guide · Contains answer keys: do not link from the participant page.</footer>
+<footer>Southwest AI · AI Made Practical | AI for Data · Trainer guide v3 · Nov 6, 2026 · Contains answer keys: do not link from the participant page.</footer>
 </main>
 <script>
 document.querySelectorAll('[data-copy]').forEach(function(el){
   var b=document.createElement('button');b.className='copy';b.type='button';b.textContent='Copy';
   b.setAttribute('aria-label','Copy prompt to clipboard');
   b.onclick=function(){
-    var txt=el.innerText.replace(/\s*(Copy|Copied!)\s*$/,'');
+    var c=el.cloneNode(true);c.querySelectorAll('.pt,.copy').forEach(function(x){x.remove()});
+    var txt=c.textContent.replace(/^\s+|\s+$/g,'');
     var done=function(){b.textContent='Copied!';setTimeout(function(){b.textContent='Copy'},1500)};
     var fb=function(){var a=document.createElement('textarea');a.value=txt;document.body.appendChild(a);a.select();try{document.execCommand('copy')}catch(e){}document.body.removeChild(a);done()};
     if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fb)}else{fb()}

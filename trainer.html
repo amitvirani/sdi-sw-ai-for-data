@@ -156,7 +156,7 @@ details.sol-outer details{background:#FFFDF9;border:1px solid #E4DDD2}
 <div class="grid">
 <div class="card"><h3>Your screen</h3><ul class="plain"><li>The slide deck</li><li>Claude, new chat, nothing attached</li><li><code>phonehub_sales.xlsx</code> open in Google Sheets</li><li>This guide on a second screen or tablet</li></ul></div>
 <div class="card"><h3>Room</h3><ul class="plain"><li>Slower participants on aisle seats near the front</li><li>Participant page URL on the board</li><li>Timer visible to you</li></ul></div>
-<div class="card"><h3>Backups</h3><ul class="plain"><li>Clean files on the participant page</li><li>Screenshots of every demo output</li><li>Hotspot if wifi dies</li></ul></div>
+<div class="card"><h3>Backups</h3><ul class="plain"><li>Clean files on the participant page</li><li>Hidden hands-on solutions at the bottom of the participant page</li><li><code>monthly_sales_example.xlsx</code> for the slide 7 table</li><li>Screenshots of every demo output</li><li>Hotspot if wifi dies</li></ul></div>
 </div>
 <p class="label">How each step below is written</p>
 <div class="split"><b>Why</b><span>The one line you say first, so learners know what it's for.</span></div>
@@ -248,6 +248,7 @@ details.sol-outer details{background:#FFFDF9;border:1px solid #E4DDD2}
 
 <section class="act hands"><h2>Release the room <span class="time">36–38</span><span class="slide">Slide 16</span></h2>
 <div class="split"><b>Say</b><span class="say">“Same six steps, new business, on your own. One Claude chat for all six. Each hands-on slide starts with a reminder of its demo. Stuck for more than two minutes? Raise your hand, or download the clean file, start a new chat and skip to H3.”</span></div>
+<div class="split"><b>Don't say</b><span>Don't announce the solutions at the bottom of the participant page. Point to them one person at a time, only when someone is still stuck after your nudge.</span></div>
 <div class="split"><b>Do</b><span>Put the H1–H6 times on screen: H1 6 · H2 9 · H3 11 · H4 7 · H5 6 · H6 6.</span></div></section>
 
 <section class="act hands"><h2>While you circulate</h2>
@@ -260,6 +261,8 @@ details.sol-outer details{background:#FFFDF9;border:1px solid #E4DDD2}
 <tr><td>H5</td><td>Counts not totaling 30</td><td>Same fix as Demo 5.</td></tr>
 <tr><td>H6</td><td>Unchecked numbers in the summary</td><td>“Show me where you checked that one.”</td></tr>
 </tbody></table></div>
+<p class="label">Hidden solutions on the participant page</p>
+<p>The last line of the participant page, “+ Stuck on the hands-on? Solutions”, opens a model prompt and the answers for each of H1–H6, one step at a time. Use it as the last fallback, after your nudge: <span class="say">“Scroll to the very bottom, open the solutions, and open only H3. Read the model prompt, then close it and write your own.”</span> The answers match the <a href="#keycc">Corner Café key</a> below.</p>
 <p><b>At 0:64</b> everyone should be past H3. Anyone behind: give them the clean file and send them to H4. Visit slower participants first at H1 and H3.</p></section>
 
 <section class="act learn" id="wrap"><h2>Wrap-up <span class="time">83–90</span><span class="slide">Slides 23–25</span></h2>
@@ -277,13 +280,15 @@ details.sol-outer details{background:#FFFDF9;border:1px solid #E4DDD2}
 <tr><td>Google Sheets import added a new tab instead of replacing</td><td>Fine for checks; for upload, redo import with “Replace spreadsheet”</td></tr>
 <tr><td>SUMIF returns 0</td><td>Wrong tab (must be Sales) or a trailing space in the name: use the clean file</td></tr>
 <tr><td>No chart from Claude</td><td>Select the totals in Google Sheets → Insert → Chart</td></tr>
+<tr><td>Learner still stuck after a nudge</td><td>Point them to the hidden solutions at the bottom of the participant page; open only the step they're on</td></tr>
+<tr><td>Learner copies a solution without checking</td><td>“Run your check anyway. Does your number match?” Their own check matters more than the answer</td></tr>
 <tr><td>Usage limit reached</td><td>The clean file in a fresh chat; if that's blocked too, they follow on the projector and still do the Google Sheets checks</td></tr>
 </tbody></table></div>
 <p class="label">Running behind? Cut in this order</p>
 <ol class="steps"><li>Demo 4: show your screenshot instead of generating the charts</li><li>Demo 5: label two reviews with the room instead of five</li><li>Slide 8: point to the table on the participant page and move on</li><li>Never cut slide 7, slides 11–12 or H6</li></ol></section>
 
 <div class="part learn"><h2>Answer keys</h2><p>PhoneHub (demos, navy) and Corner Café (hands-on, teal).</p></div>
-<p class="sub">Computed in code from the files. <b>Cleaning rules:</b> standardize names; move misfiled items; remove the exact duplicate; blank discounts = 0; exclude dates outside Jan–Jun 2026; fix the price outlier; recalculate Net_Sales = Price_USD × Quantity × (1 − Discount_Pct/100). Average discount = simple average per sale. Profit margin = (Net Sales − Unit_Cost_USD × Quantity) ÷ Net Sales.</p>
+<p class="sub">The Corner Café answers here also appear, collapsed, at the bottom of the participant page. Computed in code from the files. <b>Cleaning rules:</b> standardize names; move misfiled items; remove the exact duplicate; blank discounts = 0; exclude dates outside Jan–Jun 2026; fix the price outlier; recalculate Net_Sales = Price_USD × Quantity × (1 − Discount_Pct/100). Average discount = simple average per sale. Profit margin = (Net Sales − Unit_Cost_USD × Quantity) ÷ Net Sales.</p>
 
 <section class="act learn" id="keyph"><h2>PhoneHub</h2>
 <p><b>Rows:</b> Sales 128 → 126 after cleaning · Inventory 13 · Reviews 40. <b>Totals:</b> Net Sales $116,750.98 · Units 156 · Gross Profit $21,470.98 · raw file as-is $118,973.68.</p>

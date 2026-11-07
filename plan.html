@@ -90,6 +90,32 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 @media print{header{background:none;color:#000;padding:10px 0}.copy,nav.tabs,.jump{display:none}.kicker,header p{color:#000}details{display:block}details>*{display:block}.part{background:none;color:#000;border:2px solid #000}.part h2{color:#000}}
 
 #ros td:first-child{white-space:nowrap}
+
+/* Slide color coding: matches the class deck (navy = Learn, amber = Activity, teal = Hands-on) */
+:root{--learn:#16324A;--act:#E8A33D;--hands:#2A7F7A;--learn-ink:#16324A;--hands-ink:#1F6B66}
+@media (prefers-color-scheme:dark){:root{--learn:#9DB9D3;--hands:#5CC2BB;--learn-ink:#c9d8e6;--hands-ink:#7fd3cc}}
+.time{background:none;color:var(--muted);border:1.5px solid var(--muted)}
+section.act.learn,section.act.hands{border-left:6px solid var(--learn);padding-left:18px}
+section.act.hands{border-left-color:var(--hands)}
+.slide{font-family:Calibri,"Segoe UI",system-ui,sans-serif;font-size:.75rem;font-weight:700;letter-spacing:.04em;color:#fff;background:#16324A;border-radius:99px;padding:2px 10px;margin-left:8px;vertical-align:middle;white-space:nowrap}
+.hands .slide,tr.hands .slide{background:#2A7F7A}
+td .slide{margin-left:0}
+.part.learn{background:#16324A;color:#F3E9DC}.part.learn h2{color:#fff}
+.part.hands{background:#2A7F7A;color:#fff}.part.hands h2{color:#fff}
+.part.learn .time,.part.hands .time{color:#F3E9DC;border-color:rgba(243,233,220,.6)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 20px;margin:10px 0 6px;font-size:.92rem}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.sw{display:inline-block;width:16px;height:16px;border-radius:4px}
+.sw.l{background:#16324A;box-shadow:0 0 0 1.5px rgba(243,233,220,.5)}.sw.a{background:#E8A33D}.sw.h{background:#2A7F7A}
+tr.learn td:first-child{box-shadow:inset 5px 0 var(--learn)}
+tr.hands td:first-child{box-shadow:inset 5px 0 var(--hands)}
+tr.grp td{font-size:.95rem}
+tr.grp.learn td{background:rgba(22,50,74,.10)}tr.grp.hands td{background:rgba(42,127,122,.14)}
+.chip{display:inline-block;font-weight:700;font-size:.85rem;border-radius:99px;padding:1px 10px;white-space:nowrap}
+.chip.learn{color:var(--learn-ink);border:1.5px solid var(--learn)}
+.chip.hands{color:var(--hands-ink);border:1.5px solid var(--hands)}
+@media print{section.act.learn,section.act.hands{border-left-width:4px}.part.learn,.part.hands{color:#000}.part.learn h2,.part.hands h2{color:#000}}
+@media (prefers-color-scheme:dark){.slide{background:#9DB9D3;color:#0f2133}.hands .slide,tr.hands .slide{background:#5CC2BB;color:#0f2133}}
 </style>
 </head>
 <body>
@@ -104,6 +130,8 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <p><b>90 minutes, 25 slides, built on the six steps of any analysis:</b> understand the data, clean it, answer the question, chart it, read the comments, report. You demonstrate each step on PhoneHub, a phone store, while learners watch. Then learners spend 47 minutes (52%) doing the same six steps on their own with Corner Café, a coffee shop. PhoneHub is only for the demos; Corner Café is only for the hands-on.</p>
 <div class="split"><b>Audience</b><span>Mixed: some confident, some know basic AI tools, some digital literate but slow. Everyone works on their own; there is no pair or group work.</span></div>
 <div class="split"><b>Tools</b><span>Claude (one chat per dataset) · Google Sheets (privacy edits and checks)</span></div>
+<div class="split"><b>Colors</b><span>Pages and slides use the same strip colors: navy = Learn (explanations and demos), teal = Hands-on. Amber marks a no-tool activity and appears only in the slide legend.</span></div>
+<div class="legend" aria-label="Slide colors"><span><i class="sw l"></i>Navy · Learn: watch and listen</span><span><i class="sw a"></i>Amber · Activity</span><span><i class="sw h"></i>Teal · Hands-on: your own laptop</span></div>
 <div class="split"><b>Core message</b><span>AI does the mechanical work. You bring the question, judge whether the answer makes sense, and check every number before it leaves your hands.</span></div></div>
 
 <nav class="jump" aria-label="Jump to a section"><a href="#obj">Objectives</a><a href="#steps">Six steps</a><a href="#ros">Run of show</a><a href="#ask">How to ask AI</a><a href="#resp">Responsible AI</a><a href="#sets">Datasets</a><a href="#prep">Prep</a><a href="#mixed">Mixed ability</a><a href="#home">Take-home</a></nav>
@@ -122,46 +150,46 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 <section class="act" id="steps"><h2>The six steps of any analysis</h2>
 <p class="sub">Every demo and every hands-on step is named after its step, and each one ends with a check.</p>
 <div class="tbl"><table><thead><tr><th>Step</th><th>The question it answers</th><th>Demo (PhoneHub)</th><th>Hands-on (Corner Café)</th><th>How you check it</th></tr></thead><tbody>
-<tr><td><b>1 · Understand the data</b></td><td>What does one row mean, and what can this data answer?</td><td>Demo 1, slides 5–6</td><td>H1, slide 17</td><td>Row counts with <code>=COUNTA</code></td></tr>
-<tr><td><b>2 · Clean it</b></td><td>Is the data clean enough to trust?</td><td>Demo 2, slides 7–9</td><td>H2, slide 18</td><td>Recompute one changed row</td></tr>
-<tr><td><b>3 · Answer the question</b></td><td>What do the numbers say about the owner's decision?</td><td>Demo 3, slides 10–12</td><td>H3, slide 19</td><td>Sense check, then <code>=SUMIF</code></td></tr>
-<tr><td><b>4 · Chart it</b></td><td>Can the owner see the answer in seconds?</td><td>Demo 4, slide 13</td><td>H4, slide 20</td><td>Bars match checked totals and start at zero</td></tr>
-<tr><td><b>5 · Read the comments</b></td><td>What do customers complain about most?</td><td>Demo 5, slide 14</td><td>H5, slide 21</td><td>Counts add up; quotes found word for word</td></tr>
-<tr><td><b>6 · Report</b></td><td>What should the owner do next?</td><td>Demo 6, slide 15</td><td>H6, slide 22</td><td>Every number traced to a check</td></tr>
+<tr><td><b>1 · Understand the data</b></td><td>What does one row mean, and what can this data answer?</td><td><span class="chip learn">Demo 1, slides 5–6</span></td><td><span class="chip hands">H1, slide 17</span></td><td>Row counts with <code>=COUNTA</code></td></tr>
+<tr><td><b>2 · Clean it</b></td><td>Is the data clean enough to trust?</td><td><span class="chip learn">Demo 2, slides 7–9</span></td><td><span class="chip hands">H2, slide 18</span></td><td>Recompute one changed row</td></tr>
+<tr><td><b>3 · Answer the question</b></td><td>What do the numbers say about the owner's decision?</td><td><span class="chip learn">Demo 3, slides 10–12</span></td><td><span class="chip hands">H3, slide 19</span></td><td>Sense check, then <code>=SUMIF</code></td></tr>
+<tr><td><b>4 · Chart it</b></td><td>Can the owner see the answer in seconds?</td><td><span class="chip learn">Demo 4, slide 13</span></td><td><span class="chip hands">H4, slide 20</span></td><td>Bars match checked totals and start at zero</td></tr>
+<tr><td><b>5 · Read the comments</b></td><td>What do customers complain about most?</td><td><span class="chip learn">Demo 5, slide 14</span></td><td><span class="chip hands">H5, slide 21</span></td><td>Counts add up; quotes found word for word</td></tr>
+<tr><td><b>6 · Report</b></td><td>What should the owner do next?</td><td><span class="chip learn">Demo 6, slide 15</span></td><td><span class="chip hands">H6, slide 22</span></td><td>Every number traced to a check</td></tr>
 </tbody></table></div></section>
 
 <section class="act" id="ros"><h2>Run of show</h2>
 <p class="sub">Hands-on 47 min · Learn (explanations and demos) 43 min. Each hands-on slide opens with a one-line reminder of its demo, because it comes 20–40 minutes later.</p>
 <div class="tbl"><table><thead><tr><th>Min</th><th>Slide</th><th>Segment</th><th>Why we do it</th></tr></thead><tbody>
-<tr><td colspan="4"><b>Part A · Basics</b></td></tr>
-<tr><td>0–1</td><td>1</td><td>AI for Data: From Questions to Checked Answers</td><td>Set the promise: real business questions, every number checked.</td></tr>
-<tr><td>1–3</td><td>2</td><td>Class outline: the six steps of any analysis</td><td>Give learners the backbone they'll follow all session.</td></tr>
-<tr><td>3–4</td><td>3</td><td>What you'll be able to do</td><td>Goals are analysis skills, not prompt formulas.</td></tr>
-<tr><td>4–5</td><td>4</td><td>What AI does well with data, and where it slips</td><td>Set realistic trust before any demo.</td></tr>
-<tr><td colspan="4"><b>Part B · Watch on PhoneHub</b></td></tr>
-<tr><td>5–7</td><td>5</td><td>Step 1 · How to ask AI (RTCC, one slide)</td><td>A vague request lets the AI choose its own question and skip checks.</td></tr>
-<tr><td>7–10</td><td>6</td><td>Demo 1 · Understand the data</td><td>If one row means something else, every later number is wrong.</td></tr>
-<tr><td>10–14</td><td>7</td><td>Demo 2 · Spot the AI mistake (room answers, then reveal)</td><td>Learners see for themselves that AI can be confidently wrong.</td></tr>
-<tr><td>14–16</td><td>8</td><td>Demo 2 · Five mistakes to watch for</td><td>These become the checks in every cleaning request.</td></tr>
-<tr><td>16–19</td><td>9</td><td>Demo 2 · Clean the data</td><td>AI only finds the problems you name.</td></tr>
-<tr><td>19–24</td><td>10</td><td>Demo 3 · Answer the question</td><td>Turn the owner's question into measures before writing any prompt.</td></tr>
-<tr><td>24–26</td><td>11</td><td>Does the answer make sense?</td><td>A formula proves the adding, not that the answer is reasonable.</td></tr>
-<tr><td>26–28</td><td>12</td><td>Check the numbers in Google Sheets</td><td>One formula per key number settles it.</td></tr>
-<tr><td>28–31</td><td>13</td><td>Demo 4 · Chart it</td><td>Pick the chart that fits the question; a chart also exposes bad numbers.</td></tr>
-<tr><td>31–34</td><td>14</td><td>Demo 5 · Read the comments</td><td>Reviews hint at why; label a few yourself to judge the AI.</td></tr>
-<tr><td>34–36</td><td>15</td><td>Demo 6 · Report (CRAFT)</td><td>The owner wants meaning and next steps, from checked numbers only.</td></tr>
-<tr><td colspan="4"><b>Part C · Do on Corner Café</b></td></tr>
-<tr><td>36–38</td><td>16</td><td>Your turn: meet Corner Café</td><td>New business, same six steps.</td></tr>
-<tr><td>38–44</td><td>17</td><td>H1 · Understand the data: learn what one row means</td><td>Practice step 1 without a demo to copy.</td></tr>
-<tr><td>44–53</td><td>18</td><td>H2 · Clean the data: fix what would skew the totals</td><td>The outlier is hidden in this file; only a request that names it finds it.</td></tr>
-<tr><td>53–64</td><td>19</td><td>H3 · Answer the question: find what to promote and restock, and check the numbers</td><td>The core analysis skill: measures, sense check, Sheets check.</td></tr>
-<tr><td>64–71</td><td>20</td><td>H4 · Chart it: show Maya the answer at a glance</td><td>A wrong bar shows the outlier came back.</td></tr>
-<tr><td>71–77</td><td>21</td><td>H5 · Read the comments: find Maya's top complaints</td><td>Learners design the checks into their own request.</td></tr>
-<tr><td>77–83</td><td>22</td><td>H6 · Report: a checked summary for Maya</td><td>Every number in the report traces to a check.</td></tr>
-<tr><td colspan="4"><b>Wrap-up</b></td></tr>
-<tr><td>83–86</td><td>23</td><td>Using AI responsibly</td><td>Privacy, accuracy, bias, and who owns the numbers.</td></tr>
-<tr><td>86–88</td><td>24</td><td>What you did today + share-out</td><td>Saying a finding aloud locks it in.</td></tr>
-<tr><td>88–90</td><td>25</td><td>Before you leave: exit ticket and take-home</td><td>Turn today into next week's action.</td></tr>
+<tr class="grp learn"><td colspan="4"><b>Part A · Basics</b> · navy · slides 1–4</td></tr>
+<tr class="learn"><td>0–1</td><td><span class="slide">1</span></td><td>AI for Data: From Questions to Checked Answers</td><td>Set the promise: real business questions, every number checked.</td></tr>
+<tr class="learn"><td>1–3</td><td><span class="slide">2</span></td><td>Class outline: the six steps of any analysis</td><td>Give learners the backbone they'll follow all session.</td></tr>
+<tr class="learn"><td>3–4</td><td><span class="slide">3</span></td><td>What you'll be able to do</td><td>Goals are analysis skills, not prompt formulas.</td></tr>
+<tr class="learn"><td>4–5</td><td><span class="slide">4</span></td><td>What AI does well with data, and where it slips</td><td>Set realistic trust before any demo.</td></tr>
+<tr class="grp learn"><td colspan="4"><b>Part B · Watch on PhoneHub</b> · navy · slides 5–15</td></tr>
+<tr class="learn"><td>5–7</td><td><span class="slide">5</span></td><td>Step 1 · How to ask AI (RTCC, one slide)</td><td>A vague request lets the AI choose its own question and skip checks.</td></tr>
+<tr class="learn"><td>7–10</td><td><span class="slide">6</span></td><td>Demo 1 · Understand the data</td><td>If one row means something else, every later number is wrong.</td></tr>
+<tr class="learn"><td>10–14</td><td><span class="slide">7</span></td><td>Demo 2 · Spot the AI mistake (room answers, then reveal)</td><td>Learners see for themselves that AI can be confidently wrong.</td></tr>
+<tr class="learn"><td>14–16</td><td><span class="slide">8</span></td><td>Demo 2 · Five mistakes to watch for</td><td>These become the checks in every cleaning request.</td></tr>
+<tr class="learn"><td>16–19</td><td><span class="slide">9</span></td><td>Demo 2 · Clean the data</td><td>AI only finds the problems you name.</td></tr>
+<tr class="learn"><td>19–24</td><td><span class="slide">10</span></td><td>Demo 3 · Answer the question</td><td>Turn the owner's question into measures before writing any prompt.</td></tr>
+<tr class="learn"><td>24–26</td><td><span class="slide">11</span></td><td>Does the answer make sense?</td><td>A formula proves the adding, not that the answer is reasonable.</td></tr>
+<tr class="learn"><td>26–28</td><td><span class="slide">12</span></td><td>Check the numbers in Google Sheets</td><td>One formula per key number settles it.</td></tr>
+<tr class="learn"><td>28–31</td><td><span class="slide">13</span></td><td>Demo 4 · Chart it</td><td>Pick the chart that fits the question; a chart also exposes bad numbers.</td></tr>
+<tr class="learn"><td>31–34</td><td><span class="slide">14</span></td><td>Demo 5 · Read the comments</td><td>Reviews hint at why; label a few yourself to judge the AI.</td></tr>
+<tr class="learn"><td>34–36</td><td><span class="slide">15</span></td><td>Demo 6 · Report (CRAFT)</td><td>The owner wants meaning and next steps, from checked numbers only.</td></tr>
+<tr class="grp hands"><td colspan="4"><b>Part C · Do on Corner Café</b> · teal · slides 16–22</td></tr>
+<tr class="hands"><td>36–38</td><td><span class="slide">16</span></td><td>Your turn: meet Corner Café</td><td>New business, same six steps.</td></tr>
+<tr class="hands"><td>38–44</td><td><span class="slide">17</span></td><td>H1 · Understand the data: learn what one row means</td><td>Practice step 1 without a demo to copy.</td></tr>
+<tr class="hands"><td>44–53</td><td><span class="slide">18</span></td><td>H2 · Clean the data: fix what would skew the totals</td><td>The outlier is hidden in this file; only a request that names it finds it.</td></tr>
+<tr class="hands"><td>53–64</td><td><span class="slide">19</span></td><td>H3 · Answer the question: find what to promote and restock, and check the numbers</td><td>The core analysis skill: measures, sense check, Sheets check.</td></tr>
+<tr class="hands"><td>64–71</td><td><span class="slide">20</span></td><td>H4 · Chart it: show Maya the answer at a glance</td><td>A wrong bar shows the outlier came back.</td></tr>
+<tr class="hands"><td>71–77</td><td><span class="slide">21</span></td><td>H5 · Read the comments: find Maya's top complaints</td><td>Learners design the checks into their own request.</td></tr>
+<tr class="hands"><td>77–83</td><td><span class="slide">22</span></td><td>H6 · Report: a checked summary for Maya</td><td>Every number in the report traces to a check.</td></tr>
+<tr class="grp learn"><td colspan="4"><b>Wrap-up</b> · navy · slides 23–25</td></tr>
+<tr class="learn"><td>83–86</td><td><span class="slide">23</span></td><td>Using AI responsibly</td><td>Privacy, accuracy, bias, and who owns the numbers.</td></tr>
+<tr class="learn"><td>86–88</td><td><span class="slide">24</span></td><td>What you did today + share-out</td><td>Saying a finding aloud locks it in.</td></tr>
+<tr class="learn"><td>88–90</td><td><span class="slide">25</span></td><td>Before you leave: exit ticket and take-home</td><td>Turn today into next week's action.</td></tr>
 </tbody></table></div>
 <p><b>Checkpoints:</b> at 0:36 the demos are done; at 0:64 everyone is past H3. If either slips, use the cuts in <a href="#mixed">Mixed ability</a>.</p></section>
 

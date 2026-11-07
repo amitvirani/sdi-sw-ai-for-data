@@ -7,7 +7,7 @@
 <meta name="description" content="Slide-by-slide trainer script for AI for Data: what to click, what to say, what to expect, answer keys and fixes.">
 <style>
 :root{--ink:#16324A;--amber:#E8A33D;--terra:#C8553D;--sand:#F3E9DC;--slate:#4A5A68;--teal:#2A7F7A;--brick:#A63D2F;--bg:#fff;--fg:#16324A;--muted:#4A5A68;--card:#F3E9DC;--code:#fff}
-@media (prefers-color-scheme:dark){:root{--bg:#0f2133;--fg:#F3E9DC;--muted:#b8c4cf;--card:#1b3a55;--code:#16324A;--terra:#F08A6F;--teal:#5CC2BB;--brick:#F28B7C}}
+
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.55 Calibri,"Segoe UI",system-ui,sans-serif}
 .wrap{max-width:860px;margin:0 auto;padding:0 20px}
@@ -93,7 +93,7 @@ code,.mono{font-family:Consolas,"SF Mono",Menlo,monospace;font-size:.88em;backgr
 
 /* Slide color coding: matches the class deck (navy = Learn, amber = Activity, teal = Hands-on) */
 :root{--learn:#16324A;--act:#E8A33D;--hands:#2A7F7A;--learn-ink:#16324A;--hands-ink:#1F6B66}
-@media (prefers-color-scheme:dark){:root{--learn:#9DB9D3;--hands:#5CC2BB;--learn-ink:#c9d8e6;--hands-ink:#7fd3cc}}
+
 .time{background:none;color:var(--muted);border:1.5px solid var(--muted)}
 section.act.learn,section.act.hands{border-left:6px solid var(--learn);padding-left:18px}
 section.act.hands{border-left-color:var(--hands)}
@@ -115,7 +115,7 @@ tr.grp.learn td{background:rgba(22,50,74,.10)}tr.grp.hands td{background:rgba(42
 .chip.learn{color:var(--learn-ink);border:1.5px solid var(--learn)}
 .chip.hands{color:var(--hands-ink);border:1.5px solid var(--hands)}
 @media print{section.act.learn,section.act.hands{border-left-width:4px}.part.learn,.part.hands{color:#000}.part.learn h2,.part.hands h2{color:#000}}
-@media (prefers-color-scheme:dark){.slide{background:#9DB9D3;color:#0f2133}.hands .slide,tr.hands .slide{background:#5CC2BB;color:#0f2133}}
+
 
 /* Backgrounds matching the slides: cream Learn slides, light-teal Hands-on slides */
 :root{--bg:#FBF8F3;--code:#FFFDF9}
@@ -124,11 +124,10 @@ section.act.hands h2{margin-top:.9em}
 section.act.hands .why{background:#D3E9E6}
 section.act.learn .card{border:1px solid #E4DDD2}
 .part.hands + section.act.hands{margin-top:20px}
-@media (prefers-color-scheme:dark){:root{--bg:#0f2133;--code:#16324A}
- section.act.hands{background:rgba(92,194,187,.10);--card:#1b3a55;--code:#16324A}
- section.act.hands .why{background:rgba(92,194,187,.16)}
- section.act.learn .card{border-color:rgba(243,233,220,.12)}}
+
 section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{color:var(--hands-ink)}
+
+:root{color-scheme:light}
 </style>
 </head>
 <body>
@@ -144,7 +143,7 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 
 <nav class="jump" aria-label="Jump to a section"><a href="#before">Before class</a><a href="#a">Part A</a><a href="#b">Part B</a><a href="#c">Part C</a><a href="#wrap">Wrap</a><a href="#fix">Fixes</a><a href="#keyph">Key: PhoneHub</a><a href="#keycc">Key: Corner Café</a></nav>
 
-<section class="act" id="before"><h2>Before class</h2>
+<section class="act learn" id="before"><h2>Before class</h2>
 <div class="grid">
 <div class="card"><h3>Your screen</h3><ul class="plain"><li>The slide deck</li><li>Claude, new chat, nothing attached</li><li><code>phonehub_sales.xlsx</code> open in Google Sheets</li><li>This guide on a second screen or tablet</li></ul></div>
 <div class="card"><h3>Room</h3><ul class="plain"><li>Slower participants on aisle seats near the front</li><li>Participant page URL on the board</li><li>Timer visible to you</li></ul></div>
@@ -258,7 +257,7 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 <div class="split"><b>Share-out</b><span>2–3 volunteers each say one finding about Corner Café and how they checked it. Fish for the price outlier (CC-2073), the Colombia Huila name mismatch, or a review where stars and words disagree (C-18, C-21).</span></div>
 <div class="split"><b>Close</b><span><span class="say">“Practice on made-up data, use real data only in approved tools, and check every number.”</span> Exit ticket and take-home are on the participant page.</span></div></section>
 
-<section class="act" id="fix"><h2>Troubleshooting and cuts</h2>
+<section class="act learn" id="fix"><h2>Troubleshooting and cuts</h2>
 <div class="tbl"><table><thead><tr><th>Problem</th><th>Fix</th></tr></thead><tbody>
 <tr><td>Claude can't see the file</td><td>Re-attach; wait for the file chip before sending</td></tr>
 <tr><td>Only one sheet read</td><td><code>Please read all three sheets.</code> Check they downloaded .xlsx, not .csv</td></tr>
@@ -273,10 +272,10 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 <p class="label">Running behind? Cut in this order</p>
 <ol class="steps"><li>Demo 4: show your screenshot instead of generating the charts</li><li>Demo 5: label two reviews with the room instead of five</li><li>Slide 8: point to the table on the participant page and move on</li><li>Never cut slide 7, slides 11–12 or H6</li></ol></section>
 
-<h2 style="color:var(--terra)">Answer keys</h2>
+<div class="part learn"><h2>Answer keys</h2><p>PhoneHub (demos, navy) and Corner Café (hands-on, teal).</p></div>
 <p class="sub">Computed in code from the files. <b>Cleaning rules:</b> standardize names; move misfiled items; remove the exact duplicate; blank discounts = 0; exclude dates outside Jan–Jun 2026; fix the price outlier; recalculate Net_Sales = Price_USD × Quantity × (1 − Discount_Pct/100). Average discount = simple average per sale. Profit margin = (Net Sales − Unit_Cost_USD × Quantity) ÷ Net Sales.</p>
 
-<section class="act" id="keyph"><h2>PhoneHub</h2>
+<section class="act learn" id="keyph"><h2>PhoneHub</h2>
 <p><b>Rows:</b> Sales 128 → 126 after cleaning · Inventory 13 · Reviews 40. <b>Totals:</b> Net Sales $116,750.98 · Units 156 · Gross Profit $21,470.98 · raw file as-is $118,973.68.</p>
 <details open><summary>Slide 7 outlier table</summary><p>Months as shown on the slide: Jan 48,200 · Feb 46,900 · Mar 51,300 · Apr 52,800 · May 54,100 · Jun 55,600 · Jul 950,000 · Aug 53,900 · Sep 50,700 · Oct 49,800 · Nov 52,400 · Dec 58,300. Total $1,524,000; average $127,000. Without July: 11 months, $46,900–$58,300, average $52,182.</p></details>
 <details open><summary>Planted problems</summary><div class="tbl"><table><thead><tr><th>Problem</th><th>Rows</th><th>Fix</th></tr></thead><tbody>
@@ -312,7 +311,7 @@ section.act.hands .why{border-left-color:var(--hands)}section.act.hands .why b{c
 </tbody></table></div>
 <p><b>R-01 to R-05:</b> Staff knowledge, Positive · Online shipping, Negative (sarcastic) · Activation &amp; setup, Negative (Spanish) · Online shipping, Positive · Price &amp; trade-in, Mixed. <b>Stars vs sentiment:</b> R-27 (5 stars, Mixed), R-31 (1 star, Positive; likely misclick).</p></details></section>
 
-<section class="act" id="keycc"><h2>Corner Café</h2>
+<section class="act hands" id="keycc"><h2>Corner Café</h2>
 <p><b>Rows:</b> Sales 140 → 138 · Inventory 11 · Reviews 30. <b>Totals:</b> Net Sales $5,891.30 · Units 191 · Gross Profit $3,177.10 · raw file as-is $7,884.10.</p>
 <details open><summary>H1 · Understand the data</summary><p>One Sales row = one order line: one product, at one location, on one date. Row counts: Sales 140, Inventory 11, Reviews 30. Personal details in review text: a staff name in C-01 and a phone number in C-23.</p>
 <p class="label">Model prompt for anyone stuck</p><div class="prompt" data-copy><span class="pt">Role</span>You are a careful data analyst.
